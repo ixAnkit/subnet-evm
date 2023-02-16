@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ava-labs/avalanchego/version"
+	"github.com/MetalBlockchain/metalgo/version"
 	"github.com/stretchr/testify/assert"
 )
 

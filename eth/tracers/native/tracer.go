@@ -48,7 +48,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/ava-labs/subnet-evm/eth/tracers"
+	"github.com/MetalBlockchain/subnet-evm/eth/tracers"
 )
 
 // init registers itself this packages as a lookup for tracers.

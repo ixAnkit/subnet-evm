@@ -7,11 +7,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/ava-labs/avalanchego/codec"
-	"github.com/ava-labs/avalanchego/ids"
-	"github.com/ava-labs/subnet-evm/plugin/evm/message"
-	"github.com/ava-labs/subnet-evm/warp"
-	"github.com/ava-labs/subnet-evm/warp/handlers/stats"
+	"github.com/MetalBlockchain/metalgo/codec"
+	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
+	"github.com/MetalBlockchain/subnet-evm/warp"
+	"github.com/MetalBlockchain/subnet-evm/warp/handlers/stats"
 	"github.com/ethereum/go-ethereum/log"
 )
 

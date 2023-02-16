@@ -7,8 +7,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/ava-labs/avalanchego/utils/formatting"
-	"github.com/ava-labs/subnet-evm/core"
+	"github.com/MetalBlockchain/metalgo/utils/formatting"
+	"github.com/MetalBlockchain/subnet-evm/core"
 	"github.com/ethereum/go-ethereum/common"
 )
 

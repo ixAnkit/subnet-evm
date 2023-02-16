@@ -30,7 +30,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/ava-labs/subnet-evm/params"
+	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/urfave/cli/v2"
 )
 

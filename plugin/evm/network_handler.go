@@ -6,14 +6,14 @@ package evm
 import (
 	"context"
 
-	"github.com/ava-labs/avalanchego/codec"
-	"github.com/ava-labs/avalanchego/ids"
-	"github.com/ava-labs/subnet-evm/metrics"
-	"github.com/ava-labs/subnet-evm/plugin/evm/message"
-	syncHandlers "github.com/ava-labs/subnet-evm/sync/handlers"
-	syncStats "github.com/ava-labs/subnet-evm/sync/handlers/stats"
-	"github.com/ava-labs/subnet-evm/trie"
-	warpHandlers "github.com/ava-labs/subnet-evm/warp/handlers"
+	"github.com/MetalBlockchain/metalgo/codec"
+	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/MetalBlockchain/subnet-evm/metrics"
+	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
+	syncHandlers "github.com/MetalBlockchain/subnet-evm/sync/handlers"
+	syncStats "github.com/MetalBlockchain/subnet-evm/sync/handlers/stats"
+	"github.com/MetalBlockchain/subnet-evm/trie"
+	warpHandlers "github.com/MetalBlockchain/subnet-evm/warp/handlers"
 )
 
 var _ message.RequestHandler = &networkHandler{}

@@ -32,7 +32,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/ava-labs/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/ethdb"
 )
 
 // TestDatabaseSuite runs a suite of tests against a KeyValueStore database

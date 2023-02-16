@@ -29,7 +29,7 @@ package trie
 import (
 	"testing"
 
-	"github.com/ava-labs/subnet-evm/ethdb/memorydb"
+	"github.com/MetalBlockchain/subnet-evm/ethdb/memorydb"
 	"github.com/ethereum/go-ethereum/common"
 )
 

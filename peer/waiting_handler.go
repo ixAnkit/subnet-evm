@@ -4,7 +4,7 @@
 package peer
 
 import (
-	"github.com/ava-labs/subnet-evm/plugin/evm/message"
+	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
 )
 
 var _ message.ResponseHandler = &waitingResponseHandler{}

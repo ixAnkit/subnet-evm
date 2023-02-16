@@ -33,21 +33,21 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ava-labs/subnet-evm/accounts/abi"
-	"github.com/ava-labs/subnet-evm/consensus"
-	"github.com/ava-labs/subnet-evm/core"
-	"github.com/ava-labs/subnet-evm/core/rawdb"
-	"github.com/ava-labs/subnet-evm/core/state"
-	"github.com/ava-labs/subnet-evm/core/types"
-	"github.com/ava-labs/subnet-evm/core/vm"
-	"github.com/ava-labs/subnet-evm/eth/tracers"
-	"github.com/ava-labs/subnet-evm/eth/tracers/logger"
-	"github.com/ava-labs/subnet-evm/params"
+	"github.com/MetalBlockchain/subnet-evm/accounts/abi"
+	"github.com/MetalBlockchain/subnet-evm/consensus"
+	"github.com/MetalBlockchain/subnet-evm/core"
+	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
+	"github.com/MetalBlockchain/subnet-evm/core/state"
+	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/MetalBlockchain/subnet-evm/core/vm"
+	"github.com/MetalBlockchain/subnet-evm/eth/tracers"
+	"github.com/MetalBlockchain/subnet-evm/eth/tracers/logger"
+	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/asm"
 
 	// force-load native tracers to trigger registration
-	_ "github.com/ava-labs/subnet-evm/eth/tracers/native"
+	_ "github.com/MetalBlockchain/subnet-evm/eth/tracers/native"
 )
 
 func TestDefaults(t *testing.T) {

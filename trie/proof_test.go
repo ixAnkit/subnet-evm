@@ -35,8 +35,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ava-labs/subnet-evm/core/rawdb"
-	"github.com/ava-labs/subnet-evm/ethdb/memorydb"
+	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
+	"github.com/MetalBlockchain/subnet-evm/ethdb/memorydb"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 )

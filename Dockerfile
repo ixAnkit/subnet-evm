@@ -2,7 +2,7 @@
 
 # ============= Setting up base Stage ================
 # Set required AVALANCHE_VERSION parameter in build image script
-ARG AVALANCHE_VERSION
+ARG METAL_VERSION
 
 # ============= Compilation Stage ================
 FROM golang:1.18.5-buster AS builder
@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends bash=5.0-4 git=
 
 WORKDIR /build
 
-# Copy avalanche dependencies first (intermediate docker image caching)
-# Copy avalanchego directory if present (for manual CI case, which uses local dependency)
-COPY go.mod go.sum avalanchego* ./
+# Copy metal dependencies first (intermediate docker image caching)
+# Copy metalgo directory if present (for manual CI case, which uses local dependency)
+COPY go.mod go.sum metalgo* ./
 
 # Download avalanche dependencies using go mod
 RUN go mod download && go mod tidy -compat=1.18
@@ -27,7 +27,7 @@ ARG CURRENT_BRANCH
 RUN export SUBNET_EVM_COMMIT=$SUBNET_EVM_COMMIT && export CURRENT_BRANCH=$CURRENT_BRANCH && ./scripts/build.sh /build/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy
 
 # ============= Cleanup Stage ================
-FROM avaplatform/avalanchego:$AVALANCHE_VERSION AS builtImage
+FROM metalblockchain/metalgo:$METAL_VERSION AS builtImage
 
 # Copy the evm binary into the correct location in the container
-COPY --from=builder /build/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy /avalanchego/build/plugins/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy
+COPY --from=builder /build/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy /metalgo/build/plugins/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy

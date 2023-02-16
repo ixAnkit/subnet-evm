@@ -27,7 +27,7 @@
 package node
 
 import (
-	"github.com/ava-labs/subnet-evm/rpc"
+	"github.com/MetalBlockchain/subnet-evm/rpc"
 )
 
 const (

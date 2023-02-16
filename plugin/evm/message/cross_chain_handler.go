@@ -7,11 +7,11 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/ava-labs/avalanchego/codec"
-	"github.com/ava-labs/avalanchego/ids"
+	"github.com/MetalBlockchain/metalgo/codec"
+	"github.com/MetalBlockchain/metalgo/ids"
 
-	"github.com/ava-labs/subnet-evm/internal/ethapi"
-	"github.com/ava-labs/subnet-evm/rpc"
+	"github.com/MetalBlockchain/subnet-evm/internal/ethapi"
+	"github.com/MetalBlockchain/subnet-evm/rpc"
 
 	"github.com/ethereum/go-ethereum/log"
 )

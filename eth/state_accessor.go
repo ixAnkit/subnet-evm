@@ -32,11 +32,11 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/ava-labs/subnet-evm/core"
-	"github.com/ava-labs/subnet-evm/core/state"
-	"github.com/ava-labs/subnet-evm/core/types"
-	"github.com/ava-labs/subnet-evm/core/vm"
-	"github.com/ava-labs/subnet-evm/trie"
+	"github.com/MetalBlockchain/subnet-evm/core"
+	"github.com/MetalBlockchain/subnet-evm/core/state"
+	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/MetalBlockchain/subnet-evm/core/vm"
+	"github.com/MetalBlockchain/subnet-evm/trie"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
 )

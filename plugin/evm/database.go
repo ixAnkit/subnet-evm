@@ -4,9 +4,9 @@
 package evm
 
 import (
-	"github.com/ava-labs/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/ethdb"
 
-	"github.com/ava-labs/avalanchego/database"
+	"github.com/MetalBlockchain/metalgo/database"
 )
 
 var _ ethdb.Database = &Database{}

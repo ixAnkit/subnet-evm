@@ -35,7 +35,7 @@ import (
 	"io"
 	"sync"
 
-	"github.com/ava-labs/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/ethdb"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
 )

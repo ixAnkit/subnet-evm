@@ -31,8 +31,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/ava-labs/subnet-evm/core/rawdb"
-	"github.com/ava-labs/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
+	"github.com/MetalBlockchain/subnet-evm/ethdb"
 	"github.com/ethereum/go-ethereum/common"
 )
 

@@ -33,10 +33,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ava-labs/subnet-evm/accounts/abi/bind"
-	"github.com/ava-labs/subnet-evm/accounts/abi/bind/backends"
-	"github.com/ava-labs/subnet-evm/core"
-	"github.com/ava-labs/subnet-evm/core/types"
+	"github.com/MetalBlockchain/subnet-evm/accounts/abi/bind"
+	"github.com/MetalBlockchain/subnet-evm/accounts/abi/bind/backends"
+	"github.com/MetalBlockchain/subnet-evm/core"
+	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 )

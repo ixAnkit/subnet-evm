@@ -11,24 +11,24 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ava-labs/avalanchego/ids"
+	"github.com/MetalBlockchain/metalgo/ids"
 
-	"github.com/ava-labs/subnet-evm/ethdb/memorydb"
-	"github.com/ava-labs/subnet-evm/params"
-	"github.com/ava-labs/subnet-evm/sync/client/stats"
+	"github.com/MetalBlockchain/subnet-evm/ethdb/memorydb"
+	"github.com/MetalBlockchain/subnet-evm/params"
+	"github.com/MetalBlockchain/subnet-evm/sync/client/stats"
 
-	"github.com/ava-labs/avalanchego/codec"
-	"github.com/ava-labs/avalanchego/version"
+	"github.com/MetalBlockchain/metalgo/codec"
+	"github.com/MetalBlockchain/metalgo/version"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
 
-	"github.com/ava-labs/subnet-evm/core/types"
-	"github.com/ava-labs/subnet-evm/ethdb"
-	"github.com/ava-labs/subnet-evm/peer"
-	"github.com/ava-labs/subnet-evm/plugin/evm/message"
-	"github.com/ava-labs/subnet-evm/trie"
+	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/MetalBlockchain/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/peer"
+	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
+	"github.com/MetalBlockchain/subnet-evm/trie"
 )
 
 const (

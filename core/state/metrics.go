@@ -26,7 +26,7 @@
 
 package state
 
-import "github.com/ava-labs/subnet-evm/metrics"
+import "github.com/MetalBlockchain/subnet-evm/metrics"
 
 var (
 	accountUpdatedMeter        = metrics.NewRegisteredMeter("state/update/account", nil)

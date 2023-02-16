@@ -45,7 +45,7 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/ava-labs/subnet-evm/core"
+	"github.com/MetalBlockchain/subnet-evm/core"
 	"github.com/ethereum/go-ethereum/rlp"
 )
 

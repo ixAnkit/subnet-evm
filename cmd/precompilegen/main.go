@@ -33,8 +33,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/ava-labs/subnet-evm/accounts/abi/bind"
-	"github.com/ava-labs/subnet-evm/internal/flags"
+	"github.com/MetalBlockchain/subnet-evm/accounts/abi/bind"
+	"github.com/MetalBlockchain/subnet-evm/internal/flags"
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/urfave/cli/v2"

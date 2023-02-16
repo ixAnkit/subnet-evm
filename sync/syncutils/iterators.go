@@ -4,8 +4,8 @@
 package syncutils
 
 import (
-	"github.com/ava-labs/subnet-evm/core/state/snapshot"
-	"github.com/ava-labs/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/core/state/snapshot"
+	"github.com/MetalBlockchain/subnet-evm/ethdb"
 )
 
 var (

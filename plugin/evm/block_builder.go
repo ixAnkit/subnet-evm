@@ -7,12 +7,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ava-labs/avalanchego/utils/timer"
-	"github.com/ava-labs/subnet-evm/core"
-	"github.com/ava-labs/subnet-evm/params"
+	"github.com/MetalBlockchain/metalgo/utils/timer"
+	"github.com/MetalBlockchain/subnet-evm/core"
+	"github.com/MetalBlockchain/subnet-evm/params"
 
-	"github.com/ava-labs/avalanchego/snow"
-	commonEng "github.com/ava-labs/avalanchego/snow/engine/common"
+	"github.com/MetalBlockchain/metalgo/snow"
+	commonEng "github.com/MetalBlockchain/metalgo/snow/engine/common"
 	"github.com/ethereum/go-ethereum/log"
 )
 

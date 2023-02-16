@@ -14,15 +14,15 @@ import (
 
 	"github.com/ethereum/go-ethereum/log"
 
-	"github.com/ava-labs/avalanchego/codec"
-	"github.com/ava-labs/avalanchego/ids"
-	"github.com/ava-labs/avalanchego/snow/engine/common"
-	"github.com/ava-labs/avalanchego/snow/validators"
-	"github.com/ava-labs/avalanchego/utils/set"
-	"github.com/ava-labs/avalanchego/version"
+	"github.com/MetalBlockchain/metalgo/codec"
+	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/MetalBlockchain/metalgo/snow/engine/common"
+	"github.com/MetalBlockchain/metalgo/snow/validators"
+	"github.com/MetalBlockchain/metalgo/utils/set"
+	"github.com/MetalBlockchain/metalgo/version"
 
-	"github.com/ava-labs/subnet-evm/peer/stats"
-	"github.com/ava-labs/subnet-evm/plugin/evm/message"
+	"github.com/MetalBlockchain/subnet-evm/peer/stats"
+	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
 )
 
 // Minimum amount of time to handle a request

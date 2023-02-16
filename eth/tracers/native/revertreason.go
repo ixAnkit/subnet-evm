@@ -33,10 +33,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ava-labs/subnet-evm/accounts/abi"
-	"github.com/ava-labs/subnet-evm/core/vm"
-	"github.com/ava-labs/subnet-evm/eth/tracers"
-	"github.com/ava-labs/subnet-evm/vmerrs"
+	"github.com/MetalBlockchain/subnet-evm/accounts/abi"
+	"github.com/MetalBlockchain/subnet-evm/core/vm"
+	"github.com/MetalBlockchain/subnet-evm/eth/tracers"
+	"github.com/MetalBlockchain/subnet-evm/vmerrs"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 )

@@ -9,12 +9,12 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/ava-labs/avalanchego/ids"
-	"github.com/ava-labs/avalanchego/utils/set"
-	"github.com/ava-labs/subnet-evm/core/rawdb"
-	"github.com/ava-labs/subnet-evm/ethdb"
-	"github.com/ava-labs/subnet-evm/plugin/evm/message"
-	statesyncclient "github.com/ava-labs/subnet-evm/sync/client"
+	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/MetalBlockchain/metalgo/utils/set"
+	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
+	"github.com/MetalBlockchain/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
+	statesyncclient "github.com/MetalBlockchain/subnet-evm/sync/client"
 
 	"github.com/ethereum/go-ethereum/common"
 )

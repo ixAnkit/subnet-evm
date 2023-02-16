@@ -31,8 +31,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/ava-labs/subnet-evm/core/types"
-	"github.com/ava-labs/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/MetalBlockchain/subnet-evm/ethdb"
 	"github.com/ethereum/go-ethereum/common"
 )
 

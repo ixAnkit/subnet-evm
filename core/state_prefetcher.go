@@ -30,11 +30,11 @@ import (
 	"math/big"
 	"sync/atomic"
 
-	"github.com/ava-labs/subnet-evm/consensus"
-	"github.com/ava-labs/subnet-evm/core/state"
-	"github.com/ava-labs/subnet-evm/core/types"
-	"github.com/ava-labs/subnet-evm/core/vm"
-	"github.com/ava-labs/subnet-evm/params"
+	"github.com/MetalBlockchain/subnet-evm/consensus"
+	"github.com/MetalBlockchain/subnet-evm/core/state"
+	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/MetalBlockchain/subnet-evm/core/vm"
+	"github.com/MetalBlockchain/subnet-evm/params"
 )
 
 // statePrefetcher is a basic Prefetcher, which blindly executes a block on top

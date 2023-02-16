@@ -29,9 +29,9 @@ package core
 import (
 	"math/big"
 
-	"github.com/ava-labs/subnet-evm/consensus"
-	"github.com/ava-labs/subnet-evm/core/types"
-	"github.com/ava-labs/subnet-evm/core/vm"
+	"github.com/MetalBlockchain/subnet-evm/consensus"
+	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/MetalBlockchain/subnet-evm/core/vm"
 	"github.com/ethereum/go-ethereum/common"
 )
 

@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ava-labs/subnet-evm/metrics"
+	"github.com/MetalBlockchain/subnet-evm/metrics"
 )
 
 var (

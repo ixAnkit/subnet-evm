@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/ava-labs/subnet-evm/cmd/simulator/worker"
+	"github.com/MetalBlockchain/subnet-evm/cmd/simulator/worker"
 	"github.com/spf13/cobra"
 )
 

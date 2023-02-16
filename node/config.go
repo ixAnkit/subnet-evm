@@ -31,10 +31,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ava-labs/subnet-evm/accounts"
-	"github.com/ava-labs/subnet-evm/accounts/external"
-	"github.com/ava-labs/subnet-evm/accounts/keystore"
-	"github.com/ava-labs/subnet-evm/rpc"
+	"github.com/MetalBlockchain/subnet-evm/accounts"
+	"github.com/MetalBlockchain/subnet-evm/accounts/external"
+	"github.com/MetalBlockchain/subnet-evm/accounts/keystore"
+	"github.com/MetalBlockchain/subnet-evm/rpc"
 	"github.com/ethereum/go-ethereum/log"
 )
 

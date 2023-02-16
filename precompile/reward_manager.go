@@ -13,9 +13,9 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/ava-labs/subnet-evm/accounts/abi"
-	"github.com/ava-labs/subnet-evm/constants"
-	"github.com/ava-labs/subnet-evm/vmerrs"
+	"github.com/MetalBlockchain/subnet-evm/accounts/abi"
+	"github.com/MetalBlockchain/subnet-evm/constants"
+	"github.com/MetalBlockchain/subnet-evm/vmerrs"
 
 	"github.com/ethereum/go-ethereum/common"
 )

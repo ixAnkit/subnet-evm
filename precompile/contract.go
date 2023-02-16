@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ava-labs/avalanchego/snow"
-	"github.com/ava-labs/subnet-evm/commontype"
+	"github.com/MetalBlockchain/metalgo/snow"
+	"github.com/MetalBlockchain/subnet-evm/commontype"
 	"github.com/ethereum/go-ethereum/common"
 )
 

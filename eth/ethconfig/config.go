@@ -29,9 +29,9 @@ package ethconfig
 import (
 	"time"
 
-	"github.com/ava-labs/subnet-evm/core"
-	"github.com/ava-labs/subnet-evm/eth/gasprice"
-	"github.com/ava-labs/subnet-evm/miner"
+	"github.com/MetalBlockchain/subnet-evm/core"
+	"github.com/MetalBlockchain/subnet-evm/eth/gasprice"
+	"github.com/MetalBlockchain/subnet-evm/miner"
 	"github.com/ethereum/go-ethereum/common"
 )
 

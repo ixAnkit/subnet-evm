@@ -31,8 +31,8 @@ import (
 	"bytes"
 	"encoding/binary"
 
-	"github.com/ava-labs/avalanchego/utils/wrappers"
-	"github.com/ava-labs/subnet-evm/metrics"
+	"github.com/MetalBlockchain/metalgo/utils/wrappers"
+	"github.com/MetalBlockchain/subnet-evm/metrics"
 	"github.com/ethereum/go-ethereum/common"
 )
 

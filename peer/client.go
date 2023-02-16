@@ -6,9 +6,9 @@ package peer
 import (
 	"errors"
 
-	"github.com/ava-labs/avalanchego/ids"
+	"github.com/MetalBlockchain/metalgo/ids"
 
-	"github.com/ava-labs/avalanchego/version"
+	"github.com/MetalBlockchain/metalgo/version"
 )
 
 var (

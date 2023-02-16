@@ -6,7 +6,7 @@ package precompile
 import (
 	"math/big"
 
-	"github.com/ava-labs/subnet-evm/utils"
+	"github.com/MetalBlockchain/subnet-evm/utils"
 )
 
 // UpgradeableConfig contains the timestamp for the upgrade along with

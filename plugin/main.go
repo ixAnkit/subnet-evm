@@ -7,12 +7,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ava-labs/avalanchego/utils/logging"
-	"github.com/ava-labs/avalanchego/utils/ulimit"
-	"github.com/ava-labs/avalanchego/version"
-	"github.com/ava-labs/avalanchego/vms/rpcchainvm"
+	"github.com/MetalBlockchain/metalgo/utils/logging"
+	"github.com/MetalBlockchain/metalgo/utils/ulimit"
+	"github.com/MetalBlockchain/metalgo/version"
+	"github.com/MetalBlockchain/metalgo/vms/rpcchainvm"
 
-	"github.com/ava-labs/subnet-evm/plugin/evm"
+	"github.com/MetalBlockchain/subnet-evm/plugin/evm"
 )
 
 func main() {

@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ava-labs/subnet-evm/params"
+	"github.com/MetalBlockchain/subnet-evm/params"
 
-	"github.com/ava-labs/avalanchego/snow"
+	"github.com/MetalBlockchain/metalgo/snow"
 )
 
 func TestBlockBuilderShutsDown(t *testing.T) {
