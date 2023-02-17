@@ -44,8 +44,8 @@ elif [[ ${GOOS} == "darwin" ]]; then
 fi
 
 METALGO_PATH=${METALGO_BUILD_PATH}/metalgo
-AVALANCHEGO_PLUGIN_DIR=${METALGO_BUILD_PATH}/plugins
+METALGO_PLUGIN_DIR=${METALGO_BUILD_PATH}/plugins
 
 echo "Installed MetalGo release ${VERSION}"
 echo "MetalGo Path: ${METALGO_PATH}"
-echo "Plugin Dir: ${AVALANCHEGO_PLUGIN_DIR}"
+echo "Plugin Dir: ${METALGO_PLUGIN_DIR}"
