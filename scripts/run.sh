@@ -18,7 +18,7 @@ source "$SUBNET_EVM_PATH"/scripts/versions.sh
 # Load the constants
 source "$SUBNET_EVM_PATH"/scripts/constants.sh
 
-# Set up avalanche binary path and assume build directory is set
+# Set up metal binary path and assume build directory is set
 METALGO_BUILD_PATH=${METALGO_BUILD_PATH:-"$GOPATH/src/github.com/!metal!blockchain/metalgo/build"}
 METALGO_PATH=${METALGO_PATH:-"$METALGO_BUILD_PATH/metalgo"}
 METALGO_PLUGIN_DIR=${METALGO_PLUGIN_DIR:-"$METALGO_BUILD_PATH/plugins"}

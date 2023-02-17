@@ -34,8 +34,8 @@ guidelines:
 - Code must be documented adhering to the official Go
   [commentary](https://golang.org/doc/effective_go.html#commentary) guidelines.
 - Changes with user facing impact (e.g., addition or modification of flags and
- options) should be accompanied by a link to a pull request to the [avalanche-docs](https://github.com/ava-labs/avalanche-docs)
- repository. [example](https://github.com/ava-labs/avalanche-docs/pull/1119/files). 
+ options) should be accompanied by a link to a pull request to the [metal-docs](https://github.com/MetalBlockchain/metal-docs)
+ repository.
 - Changes that modify a package significantly or add new features should
  either update the existing or include a new `README.md` file in that package.
 

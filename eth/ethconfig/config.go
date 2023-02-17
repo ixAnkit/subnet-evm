@@ -47,7 +47,7 @@ var DefaultFullGPOConfig = gasprice.Config{
 	MinGasUsed:          gasprice.DefaultMinGasUsed,
 }
 
-// DefaultConfig contains default settings for use on the Avalanche main net.
+// DefaultConfig contains default settings for use on the Metal main net.
 var DefaultConfig = NewDefaultConfig()
 
 func NewDefaultConfig() Config {

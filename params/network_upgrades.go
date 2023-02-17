@@ -7,9 +7,9 @@ import (
 	"math/big"
 )
 
-// NetworkUpgrades contains timestamps that enable avalanche network upgrades.
+// NetworkUpgrades contains timestamps that enable metal network upgrades.
 type NetworkUpgrades struct {
-	SubnetEVMTimestamp *big.Int `json:"subnetEVMTimestamp,omitempty"` // A placeholder for the latest avalanche forks (nil = no fork, 0 = already activated)
+	SubnetEVMTimestamp *big.Int `json:"subnetEVMTimestamp,omitempty"` // A placeholder for the latest metal forks (nil = no fork, 0 = already activated)
 }
 
 func (n *NetworkUpgrades) CheckCompatible(newcfg *NetworkUpgrades, headTimestamp *big.Int) *ConfigCompatError {
