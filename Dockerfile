@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:experimental
 
 # ============= Setting up base Stage ================
-# Set required AVALANCHE_VERSION parameter in build image script
+# Set required METAL_VERSION parameter in build image script
 ARG METAL_VERSION
 
 # ============= Compilation Stage ================
@@ -14,7 +14,7 @@ WORKDIR /build
 # Copy metalgo directory if present (for manual CI case, which uses local dependency)
 COPY go.mod go.sum metalgo* ./
 
-# Download avalanche dependencies using go mod
+# Download metal dependencies using go mod
 RUN go mod download && go mod tidy -compat=1.18
 
 # Copy the code into the container
