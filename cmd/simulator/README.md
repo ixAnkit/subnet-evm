@@ -30,12 +30,12 @@ v0.0.1
 
 To run the load simulator, you must first start an EVM based network. The load simulator works on both the C-Chain and Subnet-EVM, so we will start a single node network and run the load simulator on the C-Chain.
 
-To start a single node network, follow the instructions from the AvalancheGo [README](https://github.com/ava-labs/avalanchego#building-avalanchego) to build from source.
+To start a single node network, follow the instructions from the MetalGo [README](https://github.com/ava-labs/avalanchego#building-avalanchego) to build from source.
 
-Once you've built AvalancheGo, open the AvalancheGo directory in a separate terminal window and run a single node non-staking network with the following command:
+Once you've built MetalGo, open the MetalGo directory in a separate terminal window and run a single node non-staking network with the following command:
 
 ```bash
-./build/avalanchego --staking-enabled=false --network-id=local
+./build/metalgo --staking-enabled=false --network-id=local
 ```
 
 :::warning
@@ -45,7 +45,7 @@ The staking-enabled flag is only for local testing. Disabling staking serves two
 2. Automatically opts in to validate every Subnet
 :::
 
-Once you have AvalancheGo running locally, it will be running an HTTP Server on the default port `9650`. This means that the RPC Endpoint for the C-Chain will be http://127.0.0.1:9650/ext/bc/C/rpc.
+Once you have MetalGo running locally, it will be running an HTTP Server on the default port `9650`. This means that the RPC Endpoint for the C-Chain will be http://127.0.0.1:9650/ext/bc/C/rpc.
 
 Now, we can run the simulator command to simulate some load on the local C-Chain for 30s:
 

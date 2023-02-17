@@ -22,7 +22,7 @@ func main() {
 		os.Exit(1)
 	}
 	if printVersion {
-		fmt.Printf("Subnet-EVM/%s [AvalancheGo=%s, rpcchainvm=%d]\n", evm.Version, version.Current, version.RPCChainVMProtocol)
+		fmt.Printf("Subnet-EVM/%s [MetalGo=%s, rpcchainvm=%d]\n", evm.Version, version.Current, version.RPCChainVMProtocol)
 		os.Exit(0)
 	}
 	if err := ulimit.Set(ulimit.DefaultFDLimit, logging.NoLog{}); err != nil {

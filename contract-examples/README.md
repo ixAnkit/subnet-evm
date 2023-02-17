@@ -4,11 +4,11 @@ CONTRACTS HERE ARE [ALPHA SOFTWARE](https://en.wikipedia.org/wiki/Software_relea
 
 ## Introduction
 
-Avalanche is an open-source platform for launching decentralized applications and enterprise blockchain deployments in one interoperable, highly scalable ecosystem. Avalanche gives you complete control on both the network and application layers&mdash;helping you build anything you can imagine.
+Metal is an open-source platform for launching decentralized applications and enterprise blockchain deployments in one interoperable, highly scalable ecosystem. Metal gives you complete control on both the network and application layers&mdash;helping you build anything you can imagine.
 
-The Avalanche Network is composed of many subnets and chains. Chains in subnets run with customizable virtual machines. One of these virtual machines is Subnet EVM. The Subnet EVM's API is almost identical to an Ethereum node's API. Subnet EVM brings its own features like minting native tokens via contracts, restrincting contract deployer etc. These features are presented with `Stateful Precompile Contracts`. These contracts are precompiled and deployed when they're activated.
+The Metal Network is composed of many subnets and chains. Chains in subnets run with customizable virtual machines. One of these virtual machines is Subnet EVM. The Subnet EVM's API is almost identical to an Ethereum node's API. Subnet EVM brings its own features like minting native tokens via contracts, restrincting contract deployer etc. These features are presented with `Stateful Precompile Contracts`. These contracts are precompiled and deployed when they're activated.
 
-The goal of this guide is to lay out best practices regarding writing, testing and deployment of smart contracts to Avalanche's Subnet EVM. We'll be building smart contracts with development environment [Hardhat](https://hardhat.org).
+The goal of this guide is to lay out best practices regarding writing, testing and deployment of smart contracts to Metal's Subnet EVM. We'll be building smart contracts with development environment [Hardhat](https://hardhat.org).
 
 ## Prerequisites
 
@@ -22,16 +22,16 @@ Next, install [yarn](https://yarnpkg.com):
 npm install -g yarn
 ```
 
-### Solidity and Avalanche
+### Solidity and Metal
 
-It is also helpful to have a basic understanding of [Solidity](https://docs.soliditylang.org) and [Avalanche](https://docs.avax.network).
+It is also helpful to have a basic understanding of [Solidity](https://docs.soliditylang.org) and [Metal](https://docs.metalblockchain.org).
 
 ## Dependencies
 
 Clone the repo and install the necessary packages via `yarn`.
 
 ```zsh
-$ git clone https://github.com/ava-labs/subnet-evm.git
+$ git clone https://github.com/MetalBlockchain/subnet-evm.git
 $ cd contract-examples
 $ yarn
 ```

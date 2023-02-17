@@ -27,14 +27,14 @@ func TestE2E(t *testing.T) {
 	ginkgo.RunSpecs(t, "subnet-evm precompile ginkgo test suite")
 }
 
-// BeforeSuite starts an AvalancheGo process to use for the e2e tests
+// BeforeSuite starts an MetalGo process to use for the e2e tests
 var _ = ginkgo.BeforeSuite(func() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 	defer cancel()
 
 	wd, err := os.Getwd()
 	gomega.Expect(err).Should(gomega.BeNil())
-	log.Info("Starting AvalancheGo node", "wd", wd)
+	log.Info("Starting MetalGo node", "wd", wd)
 	startCmd, err = utils.RunCommand("./scripts/run.sh")
 	gomega.Expect(err).Should(gomega.BeNil())
 
@@ -43,7 +43,7 @@ var _ = ginkgo.BeforeSuite(func() {
 	healthy, err := health.AwaitReady(ctx, healthClient, 5*time.Second)
 	gomega.Expect(err).Should(gomega.BeNil())
 	gomega.Expect(healthy).Should(gomega.BeTrue())
-	log.Info("AvalancheGo node is healthy")
+	log.Info("MetalGo node is healthy")
 })
 
 var _ = ginkgo.AfterSuite(func() {
