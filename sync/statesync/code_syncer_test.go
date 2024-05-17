@@ -10,13 +10,13 @@ import (
 
 	"github.com/MetalBlockchain/metalgo/utils"
 	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
-	"github.com/MetalBlockchain/subnet-evm/ethdb/memorydb"
 	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
 	statesyncclient "github.com/MetalBlockchain/subnet-evm/sync/client"
 	"github.com/MetalBlockchain/subnet-evm/sync/handlers"
 	handlerstats "github.com/MetalBlockchain/subnet-evm/sync/handlers/stats"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethdb/memorydb"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -44,7 +44,7 @@ func testCodeSyncer(t *testing.T, test codeSyncerTest) {
 	mockClient := statesyncclient.NewMockClient(message.Codec, nil, codeRequestHandler, nil)
 	mockClient.GetCodeIntercept = test.getCodeIntercept
 
-	clientDB := memorydb.New()
+	clientDB := rawdb.NewMemoryDatabase()
 
 	codeSyncer := newCodeSyncer(CodeSyncerConfig{
 		MaxOutstandingCodeHashes: DefaultMaxOutstandingCodeHashes,

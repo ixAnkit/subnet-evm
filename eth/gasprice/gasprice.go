@@ -30,7 +30,6 @@ import (
 	"context"
 	"fmt"
 	"math/big"
-	"sort"
 	"sync"
 
 	"github.com/MetalBlockchain/metalgo/utils/timer/mockable"
@@ -39,28 +38,30 @@ import (
 	"github.com/MetalBlockchain/subnet-evm/core"
 	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/MetalBlockchain/subnet-evm/params"
+	"github.com/MetalBlockchain/subnet-evm/precompile/contracts/feemanager"
 	"github.com/MetalBlockchain/subnet-evm/rpc"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/lru"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/event"
 	"github.com/ethereum/go-ethereum/log"
-	lru "github.com/hashicorp/golang-lru"
+	"golang.org/x/exp/slices"
 )
 
 const (
 	// DefaultMaxCallBlockHistory is the number of blocks that can be fetched in
 	// a single call to eth_feeHistory.
-	DefaultMaxCallBlockHistory int = 2048
+	DefaultMaxCallBlockHistory = 2048
 	// DefaultMaxBlockHistory is the number of blocks from the last accepted
 	// block that can be fetched in eth_feeHistory.
 	//
 	// DefaultMaxBlockHistory is chosen to be a value larger than the required
 	// fee lookback window that MetaMask uses (20k blocks).
-	DefaultMaxBlockHistory int = 25_000
+	DefaultMaxBlockHistory = 25_000
 	// DefaultFeeHistoryCacheSize is chosen to be some value larger than
 	// [DefaultMaxBlockHistory] to ensure all block lookups can be cached when
 	// serving a fee history query.
-	DefaultFeeHistoryCacheSize int = 30_000
+	DefaultFeeHistoryCacheSize = 30_000
 )
 
 var (
@@ -82,10 +83,10 @@ type Config struct {
 	MaxLookbackSeconds uint64
 	// MaxCallBlockHistory specifies the maximum number of blocks that can be
 	// fetched in a single eth_feeHistory call.
-	MaxCallBlockHistory int
+	MaxCallBlockHistory uint64
 	// MaxBlockHistory specifies the furthest back behind the last accepted block that can
 	// be requested by fee history.
-	MaxBlockHistory int
+	MaxBlockHistory uint64
 	MaxPrice        *big.Int `toml:",omitempty"`
 	MinPrice        *big.Int `toml:",omitempty"`
 	MinGasUsed      *big.Int `toml:",omitempty"`
@@ -125,9 +126,9 @@ type Oracle struct {
 
 	checkBlocks, percentile int
 	maxLookbackSeconds      uint64
-	maxCallBlockHistory     int
-	maxBlockHistory         int
-	historyCache            *lru.Cache
+	maxCallBlockHistory     uint64
+	maxBlockHistory         uint64
+	historyCache            *lru.Cache[uint64, *slimBlock]
 	feeInfoProvider         *feeInfoProvider
 }
 
@@ -178,7 +179,7 @@ func NewOracle(backend OracleBackend, config Config) (*Oracle, error) {
 		log.Warn("Sanitizing invalid gasprice oracle max block history", "provided", config.MaxBlockHistory, "updated", maxBlockHistory)
 	}
 
-	cache, _ := lru.New(DefaultFeeHistoryCacheSize)
+	cache := lru.NewCache[uint64, *slimBlock](DefaultFeeHistoryCacheSize)
 	headEvent := make(chan core.ChainHeadEvent, 1)
 	backend.SubscribeChainHeadEvent(headEvent)
 	go func() {
@@ -317,7 +318,7 @@ func (oracle *Oracle) suggestDynamicFees(ctx context.Context) (*big.Int, *big.In
 		feeLastChangedAt *big.Int
 		feeConfig        commontype.FeeConfig
 	)
-	if oracle.backend.ChainConfig().IsFeeConfigManager(new(big.Int).SetUint64(head.Time)) {
+	if oracle.backend.ChainConfig().IsPrecompileEnabled(feemanager.ContractAddress, head.Time) {
 		feeConfig, feeLastChangedAt, err = oracle.backend.GetFeeConfigAt(head)
 		if err != nil {
 			return nil, nil, err
@@ -395,12 +396,12 @@ func (oracle *Oracle) suggestDynamicFees(ctx context.Context) (*big.Int, *big.In
 	price := lastPrice
 	baseFee := lastBaseFee
 	if len(tipResults) > 0 {
-		sort.Sort(bigIntArray(tipResults))
+		slices.SortFunc(tipResults, func(a, b *big.Int) int { return a.Cmp(b) })
 		price = tipResults[(len(tipResults)-1)*oracle.percentile/100]
 	}
 
 	if len(baseFeeResults) > 0 {
-		sort.Sort(bigIntArray(baseFeeResults))
+		slices.SortFunc(baseFeeResults, func(a, b *big.Int) int { return a.Cmp(b) })
 		baseFee = baseFeeResults[(len(baseFeeResults)-1)*oracle.percentile/100]
 	}
 	if price.Cmp(oracle.maxPrice) > 0 {
@@ -433,9 +434,3 @@ func (oracle *Oracle) getFeeInfo(ctx context.Context, number uint64) (*feeInfo, 
 	}
 	return oracle.feeInfoProvider.addHeader(ctx, header)
 }
-
-type bigIntArray []*big.Int
-
-func (s bigIntArray) Len() int           { return len(s) }
-func (s bigIntArray) Less(i, j int) bool { return s[i].Cmp(s[j]) < 0 }
-func (s bigIntArray) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }

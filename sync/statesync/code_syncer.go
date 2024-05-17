@@ -12,11 +12,10 @@ import (
 	"github.com/MetalBlockchain/metalgo/ids"
 	"github.com/MetalBlockchain/metalgo/utils/set"
 	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
-	"github.com/MetalBlockchain/subnet-evm/ethdb"
 	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
 	statesyncclient "github.com/MetalBlockchain/subnet-evm/sync/client"
-
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethdb"
 )
 
 const (

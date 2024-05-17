@@ -2,7 +2,7 @@
 set -e
 
 # This script generates a Stateful Precompile stub based off of a Solidity ABI file.
-# It first sets the necessary CGO_FLAGs for the BLST library used in MetalGo and
+# It first sets the necessary CGO_FLAGs for the BLST library used in AvalancheGo and
 # then runs PrecompileGen.
 if ! [[ "$0" =~ scripts/generate_precompile.sh ]]; then
   echo "must be run from repository root, but got $0"
@@ -18,4 +18,4 @@ SUBNET_EVM_PATH=$(
 # Load the constants
 source "$SUBNET_EVM_PATH"/scripts/constants.sh
 
-go run ./cmd/precompilegen/main.go $@
+go run ./cmd/precompilegen/main.go "$@"

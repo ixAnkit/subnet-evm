@@ -30,16 +30,15 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
-	"math/big"
 	"time"
 
 	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
-	"github.com/MetalBlockchain/subnet-evm/ethdb"
+	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/MetalBlockchain/subnet-evm/trie"
 	"github.com/MetalBlockchain/subnet-evm/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/rlp"
 )
@@ -47,14 +46,6 @@ import (
 const (
 	snapshotCacheNamespace            = "state/snapshot/clean/fastcache" // prefix for detailed stats from the snapshot fastcache
 	snapshotCacheStatsUpdateFrequency = 1000                             // update stats from the snapshot fastcache once per 1000 ops
-)
-
-var (
-	// emptyRoot is the known root hash of an empty trie.
-	emptyRoot = common.HexToHash("56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421")
-
-	// emptyCode is the known hash of the empty EVM bytecode.
-	emptyCode = crypto.Keccak256Hash(nil)
 )
 
 // generatorStats is a collection of statistics gathered by the snapshot generator
@@ -279,7 +270,8 @@ func (dl *diskLayer) generate(stats *generatorStats) {
 		}
 	}
 	// Create an account and state iterator pointing to the current generator marker
-	accTrie, err := trie.NewStateTrie(common.Hash{}, dl.root, dl.triedb)
+	trieId := trie.StateTrieID(dl.root)
+	accTrie, err := trie.NewStateTrie(trieId, dl.triedb)
 	if err != nil {
 		// The account trie is missing (GC), surf the chain until one becomes available
 		stats.Info("Trie missing, state snapshotting paused", dl.root, dl.genMarker)
@@ -294,7 +286,15 @@ func (dl *diskLayer) generate(stats *generatorStats) {
 	if len(dl.genMarker) > 0 { // []byte{} is the start, use nil for that
 		accMarker = dl.genMarker[:common.HashLength]
 	}
-	accIt := trie.NewIterator(accTrie.NodeIterator(accMarker))
+	nodeIt, err := accTrie.NodeIterator(accMarker)
+	if err != nil {
+		log.Error("Generator failed to create account iterator", "root", dl)
+		abort := <-dl.genAbort
+		dl.genStats = stats
+		close(abort)
+		return
+	}
+	accIt := trie.NewIterator(nodeIt)
 	batch := dl.diskdb.NewBatch()
 
 	// Iterate from the previous marker and continue generating the state snapshot
@@ -303,16 +303,11 @@ func (dl *diskLayer) generate(stats *generatorStats) {
 		// Retrieve the current account and flatten it into the internal format
 		accountHash := common.BytesToHash(accIt.Key)
 
-		var acc struct {
-			Nonce    uint64
-			Balance  *big.Int
-			Root     common.Hash
-			CodeHash []byte
-		}
+		var acc types.StateAccount
 		if err := rlp.DecodeBytes(accIt.Value, &acc); err != nil {
 			log.Crit("Invalid account encountered during snapshot creation", "err", err)
 		}
-		data := SlimAccountRLP(acc.Nonce, acc.Balance, acc.Root, acc.CodeHash)
+		data := types.SlimAccountRLP(acc)
 
 		// If the account is not yet in-progress, write it out
 		if accMarker == nil || !bytes.Equal(accountHash[:], accMarker) {
@@ -332,8 +327,9 @@ func (dl *diskLayer) generate(stats *generatorStats) {
 		}
 		// If the iterated account is a contract, iterate through corresponding contract
 		// storage to generate snapshot entries.
-		if acc.Root != emptyRoot {
-			storeTrie, err := trie.NewStateTrie(accountHash, acc.Root, dl.triedb)
+		if acc.Root != types.EmptyRootHash {
+			storeTrieId := trie.StorageTrieID(dl.root, accountHash, acc.Root)
+			storeTrie, err := trie.NewStateTrie(storeTrieId, dl.triedb)
 			if err != nil {
 				log.Error("Generator failed to access storage trie", "root", dl.root, "account", accountHash, "stroot", acc.Root, "err", err)
 				abort := <-dl.genAbort
@@ -345,7 +341,15 @@ func (dl *diskLayer) generate(stats *generatorStats) {
 			if accMarker != nil && bytes.Equal(accountHash[:], accMarker) && len(dl.genMarker) > common.HashLength {
 				storeMarker = dl.genMarker[common.HashLength:]
 			}
-			storeIt := trie.NewIterator(storeTrie.NodeIterator(storeMarker))
+			nodeIt, err := storeTrie.NodeIterator(storeMarker)
+			if err != nil {
+				log.Error("Generator failed to create storage iterator", "root", dl.root, "account", accountHash, "stroot", acc.Root, "err", err)
+				abort := <-dl.genAbort
+				dl.genStats = stats
+				close(abort)
+				return
+			}
+			storeIt := trie.NewIterator(nodeIt)
 			for storeIt.Next() {
 				rawdb.WriteStorageSnapshot(batch, accountHash, common.BytesToHash(storeIt.Key), storeIt.Value)
 				stats.storage += common.StorageSize(1 + 2*common.HashLength + len(storeIt.Value))
@@ -405,5 +409,5 @@ func (dl *diskLayer) generate(stats *generatorStats) {
 }
 
 func newMeteredSnapshotCache(size int) *utils.MeteredCache {
-	return utils.NewMeteredCache(size, "", snapshotCacheNamespace, snapshotCacheStatsUpdateFrequency)
+	return utils.NewMeteredCache(size, snapshotCacheNamespace, snapshotCacheStatsUpdateFrequency)
 }

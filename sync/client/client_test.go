@@ -17,13 +17,14 @@ import (
 
 	"github.com/MetalBlockchain/subnet-evm/consensus/dummy"
 	"github.com/MetalBlockchain/subnet-evm/core"
+	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
 	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/ethdb/memorydb"
 	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
 	clientstats "github.com/MetalBlockchain/subnet-evm/sync/client/stats"
 	"github.com/MetalBlockchain/subnet-evm/sync/handlers"
 	handlerstats "github.com/MetalBlockchain/subnet-evm/sync/handlers/stats"
+	"github.com/MetalBlockchain/subnet-evm/sync/syncutils"
 	"github.com/MetalBlockchain/subnet-evm/trie"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
@@ -141,7 +142,7 @@ func TestGetBlocks(t *testing.T) {
 	var gspec = &core.Genesis{
 		Config: params.TestChainConfig,
 	}
-	memdb := memorydb.New()
+	memdb := rawdb.NewMemoryDatabase()
 	genesis := gspec.MustCommit(memdb)
 	engine := dummy.NewETHFaker()
 	numBlocks := 110
@@ -409,9 +410,9 @@ func TestGetLeafs(t *testing.T) {
 
 	const leafsLimit = 1024
 
-	trieDB := trie.NewDatabase(memorydb.New())
-	largeTrieRoot, largeTrieKeys, _ := trie.GenerateTrie(t, trieDB, 100_000, common.HashLength)
-	smallTrieRoot, _, _ := trie.GenerateTrie(t, trieDB, leafsLimit, common.HashLength)
+	trieDB := trie.NewDatabase(rawdb.NewMemoryDatabase())
+	largeTrieRoot, largeTrieKeys, _ := syncutils.GenerateTrie(t, trieDB, 100_000, common.HashLength)
+	smallTrieRoot, _, _ := syncutils.GenerateTrie(t, trieDB, leafsLimit, common.HashLength)
 
 	handler := handlers.NewLeafsRequestHandler(trieDB, nil, message.Codec, handlerstats.NewNoopHandlerStats())
 	client := NewClient(&ClientConfig{
@@ -780,8 +781,8 @@ func TestGetLeafs(t *testing.T) {
 func TestGetLeafsRetries(t *testing.T) {
 	rand.Seed(1)
 
-	trieDB := trie.NewDatabase(memorydb.New())
-	root, _, _ := trie.GenerateTrie(t, trieDB, 100_000, common.HashLength)
+	trieDB := trie.NewDatabase(rawdb.NewMemoryDatabase())
+	root, _, _ := syncutils.GenerateTrie(t, trieDB, 100_000, common.HashLength)
 
 	handler := handlers.NewLeafsRequestHandler(trieDB, nil, message.Codec, handlerstats.NewNoopHandlerStats())
 	mockNetClient := &mockNetwork{}
@@ -799,7 +800,7 @@ func TestGetLeafsRetries(t *testing.T) {
 		Root:  root,
 		Start: bytes.Repeat([]byte{0x00}, common.HashLength),
 		End:   bytes.Repeat([]byte{0xff}, common.HashLength),
-		Limit: defaultLeafRequestLimit,
+		Limit: 1024,
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())

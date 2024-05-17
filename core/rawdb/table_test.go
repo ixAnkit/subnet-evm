@@ -30,7 +30,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/ethdb"
+	"github.com/ethereum/go-ethereum/ethdb"
 )
 
 func TestTableDatabase(t *testing.T)            { testTableDatabase(t, "prefix") }

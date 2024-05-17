@@ -4,76 +4,108 @@
 package load
 
 import (
-	"context"
 	"fmt"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 	"testing"
-	"time"
 
-	"github.com/MetalBlockchain/metalgo/api/health"
-	"github.com/MetalBlockchain/subnet-evm/tests/utils"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/go-cmd/cmd"
 	ginkgo "github.com/onsi/ginkgo/v2"
+
 	"github.com/onsi/gomega"
+
+	"github.com/stretchr/testify/require"
+
+	"github.com/ethereum/go-ethereum/log"
+
+	"github.com/MetalBlockchain/metalgo/config"
+	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/MetalBlockchain/metalgo/tests/fixture/e2e"
+	"github.com/MetalBlockchain/metalgo/tests/fixture/tmpnet"
+	"github.com/MetalBlockchain/metalgo/utils/set"
+
+	"github.com/MetalBlockchain/subnet-evm/tests"
+	"github.com/MetalBlockchain/subnet-evm/tests/utils"
 )
 
-var startCmd *cmd.Cmd
+const (
+	// The load test requires 5 nodes
+	nodeCount = 5
+
+	subnetAName = "load-subnet-a"
+)
+
+var (
+	flagVars     *e2e.FlagVars
+	repoRootPath = tests.GetRepoRootPath("tests/load")
+)
+
+func init() {
+	// Configures flags used to configure tmpnet
+	flagVars = e2e.RegisterFlags()
+}
 
 func TestE2E(t *testing.T) {
 	gomega.RegisterFailHandler(ginkgo.Fail)
 	ginkgo.RunSpecs(t, "subnet-evm small load simulator test suite")
 }
 
-// BeforeSuite starts an MetalGo process to use for the e2e tests
-var _ = ginkgo.BeforeSuite(func() {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
-	defer cancel()
-
-	wd, err := os.Getwd()
-	gomega.Expect(err).Should(gomega.BeNil())
-	log.Info("Starting MetalGo node", "wd", wd)
-	startCmd, err = utils.RunCommand("./scripts/run.sh")
-	gomega.Expect(err).Should(gomega.BeNil())
-
-	// Assumes that startCmd will launch a node with HTTP Port at [utils.DefaultLocalNodeURI]
-	healthClient := health.NewClient(utils.DefaultLocalNodeURI)
-	healthy, err := health.AwaitReady(ctx, healthClient, 5*time.Second)
-	gomega.Expect(err).Should(gomega.BeNil())
-	gomega.Expect(healthy).Should(gomega.BeTrue())
-	log.Info("MetalGo node is healthy")
-})
-
 var _ = ginkgo.Describe("[Load Simulator]", ginkgo.Ordered, func() {
+	require := require.New(ginkgo.GinkgoT())
+
+	var env *e2e.TestEnvironment
+
+	ginkgo.BeforeAll(func() {
+		genesisPath := filepath.Join(repoRootPath, "tests/load/genesis/genesis.json")
+
+		// The load tests are flaky at high levels of evm logging, so leave it at
+		// the default level instead of raising it to debug (as the warp testing does).
+		chainConfig := tmpnet.FlagsMap{}
+
+		nodes := utils.NewTmpnetNodes(nodeCount)
+
+		env = e2e.NewTestEnvironment(
+			flagVars,
+			utils.NewTmpnetNetwork(
+				nodes,
+				tmpnet.FlagsMap{
+					// The default tmpnet log level (debug) induces too much overhead for load testing.
+					config.LogLevelKey: "info",
+				},
+				utils.NewTmpnetSubnet(subnetAName, genesisPath, chainConfig, nodes...),
+			),
+		)
+	})
+
 	ginkgo.It("basic subnet load test", ginkgo.Label("load"), func() {
-		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
-		defer cancel()
+		network := env.GetNetwork()
 
-		blockchainID := utils.CreateNewSubnet(ctx, "./tests/load/genesis/genesis.json")
+		subnet := network.GetSubnet(subnetAName)
+		require.NotNil(subnet)
+		blockchainID := subnet.Chains[0].ChainID
 
-		rpcEndpoints := make([]string, 0, len(utils.NodeURIs))
-		for _, uri := range []string{utils.DefaultLocalNodeURI} { // TODO: use NodeURIs instead, hack until fixing multi node in a network behavior
-			rpcEndpoints = append(rpcEndpoints, fmt.Sprintf("%s/ext/bc/%s/rpc", uri, blockchainID))
+		nodeURIs := tmpnet.GetNodeURIs(network.Nodes)
+		validatorIDs := set.NewSet[ids.NodeID](len(subnet.ValidatorIDs))
+		validatorIDs.Add(subnet.ValidatorIDs...)
+		rpcEndpoints := make([]string, 0, len(nodeURIs))
+		for _, nodeURI := range nodeURIs {
+			if !validatorIDs.Contains(nodeURI.NodeID) {
+				continue
+			}
+			rpcEndpoints = append(rpcEndpoints, fmt.Sprintf("%s/ext/bc/%s/rpc", nodeURI.URI, blockchainID))
 		}
 		commaSeparatedRPCEndpoints := strings.Join(rpcEndpoints, ",")
 		err := os.Setenv("RPC_ENDPOINTS", commaSeparatedRPCEndpoints)
-		gomega.Expect(err).Should(gomega.BeNil())
+		require.NoError(err)
 
-		log.Info("Sleeping with network running", "rpcEndpoints", commaSeparatedRPCEndpoints)
+		log.Info("Running load simulator...", "rpcEndpoints", commaSeparatedRPCEndpoints)
 		cmd := exec.Command("./scripts/run_simulator.sh")
+		cmd.Dir = repoRootPath
 		log.Info("Running load simulator script", "cmd", cmd.String())
 
 		out, err := cmd.CombinedOutput()
 		fmt.Printf("\nCombined output:\n\n%s\n", string(out))
-		gomega.Expect(err).Should(gomega.BeNil())
+		require.NoError(err)
 	})
-})
-
-var _ = ginkgo.AfterSuite(func() {
-	gomega.Expect(startCmd).ShouldNot(gomega.BeNil())
-	gomega.Expect(startCmd.Stop()).Should(gomega.BeNil())
-	// TODO add a new node to bootstrap off of the existing node and ensure it can bootstrap all subnets
-	// created during the test
 })

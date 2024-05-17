@@ -27,17 +27,19 @@
 package trie
 
 import (
-	"testing"
-
-	"github.com/MetalBlockchain/subnet-evm/ethdb/memorydb"
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
+	"github.com/MetalBlockchain/subnet-evm/trie/triedb/hashdb"
+	"github.com/MetalBlockchain/subnet-evm/trie/triedb/pathdb"
+	"github.com/ethereum/go-ethereum/ethdb"
 )
 
-// Tests that the trie database returns a missing trie node error if attempting
-// to retrieve the meta root.
-func TestDatabaseMetarootFetch(t *testing.T) {
-	db := NewDatabase(memorydb.New())
-	if _, err := db.RawNode(common.Hash{}); err == nil {
-		t.Fatalf("metaroot retrieval succeeded")
+// newTestDatabase initializes the trie database with specified scheme.
+func newTestDatabase(diskdb ethdb.Database, scheme string) *Database {
+	db := prepare(diskdb, nil)
+	if scheme == rawdb.HashScheme {
+		db.backend = hashdb.New(diskdb, nil, mptResolver{})
+	} else {
+		db.backend = pathdb.New(diskdb, &pathdb.Config{}) // disable clean/dirty cache
 	}
+	return db
 }

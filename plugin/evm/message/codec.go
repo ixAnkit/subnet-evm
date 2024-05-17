@@ -12,7 +12,7 @@ import (
 
 const (
 	Version        = uint16(0)
-	maxMessageSize = 1 * units.MiB
+	maxMessageSize = 2*units.MiB - 64*units.KiB // Subtract 64 KiB from p2p network cap to leave room for encoding overhead from AvalancheGo
 )
 
 var (
@@ -27,7 +27,7 @@ func init() {
 	errs := wrappers.Errs{}
 	errs.Add(
 		// Gossip types
-		c.RegisterType(TxsGossip{}),
+		c.RegisterType(EthTxsGossip{}),
 
 		// Types for state sync frontier consensus
 		c.RegisterType(SyncSummary{}),
@@ -41,7 +41,8 @@ func init() {
 		c.RegisterType(CodeResponse{}),
 
 		// Warp request types
-		c.RegisterType(SignatureRequest{}),
+		c.RegisterType(MessageSignatureRequest{}),
+		c.RegisterType(BlockSignatureRequest{}),
 		c.RegisterType(SignatureResponse{}),
 
 		Codec.RegisterCodec(Version, c),

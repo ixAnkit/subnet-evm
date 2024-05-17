@@ -42,8 +42,12 @@ import (
 	"github.com/MetalBlockchain/subnet-evm/consensus/dummy"
 	"github.com/MetalBlockchain/subnet-evm/core"
 	"github.com/MetalBlockchain/subnet-evm/core/state"
+	"github.com/MetalBlockchain/subnet-evm/core/txpool"
 	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/MetalBlockchain/subnet-evm/core/vm"
 	"github.com/MetalBlockchain/subnet-evm/params"
+	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
+	"github.com/MetalBlockchain/subnet-evm/predicate"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/event"
 	"github.com/ethereum/go-ethereum/log"
@@ -55,8 +59,7 @@ const (
 
 // environment is the worker's current environment and holds all of the current state information.
 type environment struct {
-	signer types.Signer
-
+	signer  types.Signer
 	state   *state.StateDB // apply state changes here
 	tcount  int            // tx count in cycle
 	gasPool *core.GasPool  // available gas used to pack transactions
@@ -65,7 +68,15 @@ type environment struct {
 	header   *types.Header
 	txs      []*types.Transaction
 	receipts []*types.Receipt
-	size     common.StorageSize
+	size     uint64
+
+	rules            params.Rules
+	predicateContext *precompileconfig.PredicateContext
+	// predicateResults contains the results of checking the predicates for each transaction in the miner.
+	// The results are accumulated as transactions are executed by the miner and set on the BlockContext.
+	// If a transaction is dropped, its results must explicitly be removed from predicateResults in the same
+	// way that the gas pool and state is reset.
+	predicateResults *predicate.Results
 
 	start time.Time // Time that block building began
 }
@@ -96,8 +107,9 @@ func newWorker(config *Config, chainConfig *params.ChainConfig, engine consensus
 		chainConfig: chainConfig,
 		engine:      engine,
 		eth:         eth,
-		mux:         mux,
 		chain:       eth.BlockChain(),
+		mux:         mux,
+		coinbase:    config.Etherbase,
 		clock:       clock,
 	}
 
@@ -112,7 +124,7 @@ func (w *worker) setEtherbase(addr common.Address) {
 }
 
 // commitNewWork generates several new sealing tasks based on the parent block.
-func (w *worker) commitNewWork() (*types.Block, error) {
+func (w *worker) commitNewWork(predicateContext *precompileconfig.PredicateContext) (*types.Block, error) {
 	w.mu.RLock()
 	defer w.mu.RUnlock()
 
@@ -122,38 +134,36 @@ func (w *worker) commitNewWork() (*types.Block, error) {
 	// Note: in order to support asynchronous block production, blocks are allowed to have
 	// the same timestamp as their parent. This allows more than one block to be produced
 	// per second.
-	if parent.Time() >= timestamp {
-		timestamp = parent.Time()
+	if parent.Time >= timestamp {
+		timestamp = parent.Time
 	}
 
-	bigTimestamp := new(big.Int).SetUint64(timestamp)
 	var gasLimit uint64
-	// The fee config manager relies on the state of the parent block to set the fee config
+	// The fee manager relies on the state of the parent block to set the fee config
 	// because the fee config may be changed by the current block.
-	feeConfig, _, err := w.chain.GetFeeConfigAt(parent.Header())
+	feeConfig, _, err := w.chain.GetFeeConfigAt(parent)
 	if err != nil {
 		return nil, err
 	}
 	configuredGasLimit := feeConfig.GasLimit.Uint64()
-	if w.chainConfig.IsSubnetEVM(bigTimestamp) {
+	if w.chainConfig.IsSubnetEVM(timestamp) {
 		gasLimit = configuredGasLimit
 	} else {
 		// The gas limit is set in SubnetEVMGasLimit because the ceiling and floor were set to the same value
 		// such that the gas limit converged to it. Since this is hardbaked now, we remove the ability to configure it.
-		gasLimit = core.CalcGasLimit(parent.GasUsed(), parent.GasLimit(), configuredGasLimit, configuredGasLimit)
+		gasLimit = core.CalcGasLimit(parent.GasUsed, parent.GasLimit, configuredGasLimit, configuredGasLimit)
 	}
-	num := parent.Number()
 	header := &types.Header{
 		ParentHash: parent.Hash(),
-		Number:     num.Add(num, common.Big1),
+		Number:     new(big.Int).Add(parent.Number, common.Big1),
 		GasLimit:   gasLimit,
 		Extra:      nil,
 		Time:       timestamp,
 	}
 
-	if w.chainConfig.IsSubnetEVM(bigTimestamp) {
+	if w.chainConfig.IsSubnetEVM(timestamp) {
 		var err error
-		header.Extra, header.BaseFee, err = dummy.CalcBaseFee(w.chainConfig, feeConfig, parent.Header(), timestamp)
+		header.Extra, header.BaseFee, err = dummy.CalcBaseFee(w.chainConfig, feeConfig, parent, timestamp)
 		if err != nil {
 			return nil, fmt.Errorf("failed to calculate new base fee: %w", err)
 		}
@@ -164,7 +174,7 @@ func (w *worker) commitNewWork() (*types.Block, error) {
 	}
 	header.Coinbase = w.coinbase
 
-	configuredCoinbase, isAllowFeeRecipient, err := w.chain.GetCoinbaseAt(parent.Header())
+	configuredCoinbase, isAllowFeeRecipient, err := w.chain.GetCoinbaseAt(parent)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get configured coinbase: %w", err)
 	}
@@ -181,18 +191,29 @@ func (w *worker) commitNewWork() (*types.Block, error) {
 		return nil, fmt.Errorf("failed to prepare header for mining: %w", err)
 	}
 
-	env, err := w.createCurrentEnvironment(parent, header, tstart)
+	env, err := w.createCurrentEnvironment(predicateContext, parent, header, tstart)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create new current environment: %w", err)
 	}
-	// Configure any stateful precompiles that should go into effect during this block.
-	w.chainConfig.CheckConfigurePrecompiles(new(big.Int).SetUint64(parent.Time()), types.NewBlockWithHeader(header), env.state)
+	// Ensure we always stop prefetcher after block building is complete.
+	defer func() {
+		if env.state == nil {
+			return
+		}
+		env.state.StopPrefetcher()
+	}()
+	// Configure any upgrades that should go into effect during this block.
+	err = core.ApplyUpgrades(w.chainConfig, &parent.Time, types.NewBlockWithHeader(header), env.state)
+	if err != nil {
+		log.Error("failed to configure precompiles mining new block", "parent", parent.Hash(), "number", header.Number, "timestamp", header.Time, "err", err)
+		return nil, err
+	}
 
 	// Fill the block with all available pending transactions.
-	pending := w.eth.TxPool().Pending(true)
+	pending := w.eth.TxPool().PendingWithBaseFee(true, header.BaseFee)
 
 	// Split the pending transactions into locals and remotes
-	localTxs := make(map[common.Address]types.Transactions)
+	localTxs := make(map[common.Address][]*txpool.LazyTransaction)
 	remoteTxs := pending
 	for _, account := range w.eth.TxPool().Locals() {
 		if txs := remoteTxs[account]; len(txs) > 0 {
@@ -201,115 +222,129 @@ func (w *worker) commitNewWork() (*types.Block, error) {
 		}
 	}
 	if len(localTxs) > 0 {
-		txs := types.NewTransactionsByPriceAndNonce(env.signer, localTxs, header.BaseFee)
+		txs := newTransactionsByPriceAndNonce(env.signer, localTxs, header.BaseFee)
 		w.commitTransactions(env, txs, header.Coinbase)
 	}
 	if len(remoteTxs) > 0 {
-		txs := types.NewTransactionsByPriceAndNonce(env.signer, remoteTxs, header.BaseFee)
+		txs := newTransactionsByPriceAndNonce(env.signer, remoteTxs, header.BaseFee)
 		w.commitTransactions(env, txs, header.Coinbase)
 	}
 
 	return w.commit(env)
 }
 
-func (w *worker) createCurrentEnvironment(parent *types.Block, header *types.Header, tstart time.Time) (*environment, error) {
-	state, err := w.chain.StateAt(parent.Root())
+func (w *worker) createCurrentEnvironment(predicateContext *precompileconfig.PredicateContext, parent *types.Header, header *types.Header, tstart time.Time) (*environment, error) {
+	state, err := w.chain.StateAt(parent.Root)
 	if err != nil {
 		return nil, err
 	}
+	state.StartPrefetcher("miner", w.eth.BlockChain().CacheConfig().TriePrefetcherParallelism)
 	return &environment{
-		signer:  types.MakeSigner(w.chainConfig, header.Number, new(big.Int).SetUint64(header.Time)),
-		state:   state,
-		parent:  parent.Header(),
-		header:  header,
-		tcount:  0,
-		gasPool: new(core.GasPool).AddGas(header.GasLimit),
-		start:   tstart,
+		signer:           types.MakeSigner(w.chainConfig, header.Number, header.Time),
+		state:            state,
+		parent:           parent,
+		header:           header,
+		tcount:           0,
+		gasPool:          new(core.GasPool).AddGas(header.GasLimit),
+		rules:            w.chainConfig.Rules(header.Number, header.Time),
+		predicateContext: predicateContext,
+		predicateResults: predicate.NewResults(),
+		start:            tstart,
 	}, nil
 }
 
-func (w *worker) commitTransaction(env *environment, tx *types.Transaction, coinbase common.Address) ([]*types.Log, error) {
-	snap := env.state.Snapshot()
+func (w *worker) commitTransaction(env *environment, tx *txpool.Transaction, coinbase common.Address) ([]*types.Log, error) {
+	var (
+		snap         = env.state.Snapshot()
+		gp           = env.gasPool.Gas()
+		blockContext vm.BlockContext
+	)
 
-	receipt, err := core.ApplyTransaction(w.chainConfig, w.chain, &coinbase, env.gasPool, env.state, env.header, tx, &env.header.GasUsed, *w.chain.GetVMConfig())
+	if env.rules.IsDurango {
+		results, err := core.CheckPredicates(env.rules, env.predicateContext, tx.Tx)
+		if err != nil {
+			log.Debug("Transaction predicate failed verification in miner", "tx", tx.Tx.Hash(), "err", err)
+			return nil, err
+		}
+		env.predicateResults.SetTxResults(tx.Tx.Hash(), results)
+
+		blockContext = core.NewEVMBlockContextWithPredicateResults(env.header, w.chain, &coinbase, env.predicateResults)
+	} else {
+		blockContext = core.NewEVMBlockContext(env.header, w.chain, &coinbase)
+	}
+
+	receipt, err := core.ApplyTransaction(w.chainConfig, w.chain, blockContext, env.gasPool, env.state, env.header, tx.Tx, &env.header.GasUsed, *w.chain.GetVMConfig())
 	if err != nil {
 		env.state.RevertToSnapshot(snap)
+		env.gasPool.SetGas(gp)
+		env.predicateResults.DeleteTxResults(tx.Tx.Hash())
 		return nil, err
 	}
-	env.txs = append(env.txs, tx)
+	env.txs = append(env.txs, tx.Tx)
 	env.receipts = append(env.receipts, receipt)
-	env.size += tx.Size()
+	env.size += tx.Tx.Size()
 
 	return receipt.Logs, nil
 }
 
-func (w *worker) commitTransactions(env *environment, txs *types.TransactionsByPriceAndNonce, coinbase common.Address) {
+func (w *worker) commitTransactions(env *environment, txs *transactionsByPriceAndNonce, coinbase common.Address) {
 	for {
-		// If we don't have enough gas for any further transactions then we're done
+		// If we don't have enough gas for any further transactions then we're done.
 		if env.gasPool.Gas() < params.TxGas {
 			log.Trace("Not enough gas for further transactions", "have", env.gasPool, "want", params.TxGas)
 			break
 		}
-		// Retrieve the next transaction and abort if all done
-		tx := txs.Peek()
-		if tx == nil {
+		// Retrieve the next transaction and abort if all done.
+		ltx := txs.Peek()
+		if ltx == nil {
 			break
+		}
+		tx := ltx.Resolve()
+		if tx == nil {
+			log.Warn("Ignoring evicted transaction")
+
+			txs.Pop()
+			continue
 		}
 		// Abort transaction if it won't fit in the block and continue to search for a smaller
 		// transction that will fit.
-		if totalTxsSize := env.size + tx.Size(); totalTxsSize > targetTxsSize {
-			log.Trace("Skipping transaction that would exceed target size", "hash", tx.Hash(), "totalTxsSize", totalTxsSize, "txSize", tx.Size())
+		if totalTxsSize := env.size + tx.Tx.Size(); totalTxsSize > targetTxsSize {
+			log.Trace("Skipping transaction that would exceed target size", "hash", tx.Tx.Hash(), "totalTxsSize", totalTxsSize, "txSize", tx.Tx.Size())
 
 			txs.Pop()
 			continue
 		}
 		// Error may be ignored here. The error has already been checked
 		// during transaction acceptance is the transaction pool.
-		//
-		// We use the eip155 signer regardless of the current hf.
-		from, _ := types.Sender(env.signer, tx)
+		from, _ := types.Sender(env.signer, tx.Tx)
+
 		// Check whether the tx is replay protected. If we're not in the EIP155 hf
 		// phase, start ignoring the sender until we do.
-		if tx.Protected() && !w.chainConfig.IsEIP155(env.header.Number) {
-			log.Trace("Ignoring reply protected transaction", "hash", tx.Hash(), "eip155", w.chainConfig.EIP155Block)
+		if tx.Tx.Protected() && !w.chainConfig.IsEIP155(env.header.Number) {
+			log.Trace("Ignoring reply protected transaction", "hash", tx.Tx.Hash(), "eip155", w.chainConfig.EIP155Block)
 
 			txs.Pop()
 			continue
 		}
 		// Start executing the transaction
-		env.state.Prepare(tx.Hash(), env.tcount)
+		env.state.SetTxContext(tx.Tx.Hash(), env.tcount)
 
 		_, err := w.commitTransaction(env, tx, coinbase)
 		switch {
-		case errors.Is(err, core.ErrGasLimitReached):
-			// Pop the current out-of-gas transaction without shifting in the next from the account
-			log.Trace("Gas limit exceeded for current block", "sender", from)
-			txs.Pop()
-
 		case errors.Is(err, core.ErrNonceTooLow):
 			// New head notification data race between the transaction pool and miner, shift
-			log.Trace("Skipping transaction with low nonce", "sender", from, "nonce", tx.Nonce())
+			log.Trace("Skipping transaction with low nonce", "sender", from, "nonce", tx.Tx.Nonce())
 			txs.Shift()
-
-		case errors.Is(err, core.ErrNonceTooHigh):
-			// Reorg notification data race between the transaction pool and miner, skip account =
-			log.Trace("Skipping account with high nonce", "sender", from, "nonce", tx.Nonce())
-			txs.Pop()
 
 		case errors.Is(err, nil):
 			env.tcount++
 			txs.Shift()
 
-		case errors.Is(err, core.ErrTxTypeNotSupported):
-			// Pop the unsupported transaction without shifting in the next from the account
-			log.Trace("Skipping unsupported transaction type", "sender", from, "type", tx.Type())
-			txs.Pop()
-
 		default:
-			// Strange error, discard the transaction and get the next in line (note, the
-			// nonce-too-high clause will prevent us from executing in vain).
-			log.Debug("Transaction failed, account skipped", "hash", tx.Hash(), "err", err)
-			txs.Shift()
+			// Transaction is regarded as invalid, drop all consecutive transactions from
+			// the same sender because of `nonce-too-high` clause.
+			log.Debug("Transaction failed, account skipped", "hash", tx.Tx.Hash(), "err", err)
+			txs.Pop()
 		}
 	}
 }
@@ -317,6 +352,13 @@ func (w *worker) commitTransactions(env *environment, txs *types.TransactionsByP
 // commit runs any post-transaction state modifications, assembles the final block
 // and commits new work if consensus engine is running.
 func (w *worker) commit(env *environment) (*types.Block, error) {
+	if env.rules.IsDurango {
+		predicateResultsBytes, err := env.predicateResults.Bytes()
+		if err != nil {
+			return nil, fmt.Errorf("failed to marshal predicate results: %w", err)
+		}
+		env.header.Extra = append(env.header.Extra, predicateResultsBytes...)
+	}
 	// Deep copy receipts here to avoid interaction between different tasks.
 	receipts := copyReceipts(env.receipts)
 	block, err := w.engine.FinalizeAndAssemble(w.chain, env.header, env.parent, env.state, env.txs, nil, receipts)
@@ -360,8 +402,14 @@ func (w *worker) handleResult(env *environment, block *types.Block, createdAt ti
 		logs = append(logs, receipt.Logs...)
 	}
 
-	log.Info("Commit new mining work", "number", block.Number(), "hash", hash, "uncles", 0, "txs", env.tcount,
-		"gas", block.GasUsed(), "fees", totalFees(block, receipts), "elapsed", common.PrettyDuration(time.Since(env.start)))
+	feesInEther, err := core.TotalFeesFloat(block, receipts)
+	if err != nil {
+		log.Error("TotalFeesFloat error: %s", err)
+	}
+	log.Info("Commit new mining work", "number", block.Number(), "hash", hash,
+		"uncles", 0, "txs", env.tcount,
+		"gas", block.GasUsed(), "fees", feesInEther,
+		"elapsed", common.PrettyDuration(time.Since(env.start)))
 
 	// Note: the miner no longer emits a NewMinedBlock event. Instead the caller
 	// is responsible for running any additional verification and then inserting
@@ -377,13 +425,4 @@ func copyReceipts(receipts []*types.Receipt) []*types.Receipt {
 		result[i] = &cpy
 	}
 	return result
-}
-
-// totalFees computes total consumed fees in ETH. Block transactions and receipts have to have the same order.
-func totalFees(block *types.Block, receipts []*types.Receipt) *big.Float {
-	feesWei := new(big.Int)
-	for i, tx := range block.Transactions() {
-		feesWei.Add(feesWei, new(big.Int).Mul(new(big.Int).SetUint64(receipts[i].GasUsed), tx.GasPrice()))
-	}
-	return new(big.Float).Quo(new(big.Float).SetInt(feesWei), new(big.Float).SetInt(big.NewInt(params.Ether)))
 }

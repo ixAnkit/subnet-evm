@@ -30,7 +30,7 @@ package eth
 import (
 	"errors"
 	"fmt"
-	"strings"
+	"math/big"
 	"sync"
 	"time"
 
@@ -42,13 +42,15 @@ import (
 	"github.com/MetalBlockchain/subnet-evm/core/bloombits"
 	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
 	"github.com/MetalBlockchain/subnet-evm/core/state/pruner"
+	"github.com/MetalBlockchain/subnet-evm/core/txpool"
+	"github.com/MetalBlockchain/subnet-evm/core/txpool/blobpool"
+	"github.com/MetalBlockchain/subnet-evm/core/txpool/legacypool"
 	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/MetalBlockchain/subnet-evm/core/vm"
 	"github.com/MetalBlockchain/subnet-evm/eth/ethconfig"
 	"github.com/MetalBlockchain/subnet-evm/eth/filters"
 	"github.com/MetalBlockchain/subnet-evm/eth/gasprice"
 	"github.com/MetalBlockchain/subnet-evm/eth/tracers"
-	"github.com/MetalBlockchain/subnet-evm/ethdb"
 	"github.com/MetalBlockchain/subnet-evm/internal/ethapi"
 	"github.com/MetalBlockchain/subnet-evm/internal/shutdowncheck"
 	"github.com/MetalBlockchain/subnet-evm/miner"
@@ -56,6 +58,7 @@ import (
 	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/MetalBlockchain/subnet-evm/rpc"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/event"
 	"github.com/ethereum/go-ethereum/log"
 )
@@ -70,13 +73,21 @@ type Settings struct {
 	MaxBlocksPerRequest int64 // Maximum number of blocks to serve per getLogs request
 }
 
+// PushGossiper sends pushes pending transactions to peers until they are
+// removed from the mempool.
+type PushGossiper interface {
+	Add(*types.Transaction)
+}
+
 // Ethereum implements the Ethereum full node service.
 type Ethereum struct {
 	config *Config
 
 	// Handlers
-	txPool     *core.TxPool
+	txPool *txpool.TxPool
+
 	blockchain *core.BlockChain
+	gossiper   PushGossiper
 
 	// DB interfaces
 	chainDb ethdb.Database // Block chain database
@@ -117,6 +128,7 @@ func roundUpCacheSize(input int, allocSize int) int {
 func New(
 	stack *node.Node,
 	config *Config,
+	gossiper PushGossiper,
 	chainDb ethdb.Database,
 	settings Settings,
 	lastAcceptedHash common.Hash,
@@ -138,20 +150,6 @@ func New(
 		"snapshot clean", common.StorageSize(config.SnapshotCache)*1024*1024,
 	)
 
-	chainConfig, genesisErr := core.SetupGenesisBlock(chainDb, config.Genesis, lastAcceptedHash, config.SkipUpgradeCheck)
-	if genesisErr != nil {
-		return nil, genesisErr
-	}
-	log.Info("")
-	log.Info(strings.Repeat("-", 153))
-	for _, line := range strings.Split(chainConfig.String(), "\n") {
-		log.Info(line)
-	}
-	log.Info(strings.Repeat("-", 153))
-	log.Info("")
-	// Free airdrop data to save memory usage
-	config.Genesis.AirdropData = nil
-
 	// Note: RecoverPruning must be called to handle the case that we are midway through offline pruning.
 	// If the data directory is changed in between runs preventing RecoverPruning from performing its job correctly,
 	// it may cause DB corruption.
@@ -161,8 +159,10 @@ func New(
 	if err := pruner.RecoverPruning(config.OfflinePruningDataDirectory, chainDb); err != nil {
 		log.Error("Failed to recover state", "error", err)
 	}
+
 	eth := &Ethereum{
 		config:            config,
+		gossiper:          gossiper,
 		chainDb:           chainDb,
 		eventMux:          new(event.TypeMux),
 		accountManager:    stack.AccountManager(),
@@ -185,7 +185,7 @@ func New(
 
 	if !config.SkipBcVersionCheck {
 		if bcVersion != nil && *bcVersion > core.BlockChainVersion {
-			return nil, fmt.Errorf("database version is v%d, Subnet EVM %s only supports v%d", *bcVersion, params.VersionWithMeta, core.BlockChainVersion)
+			return nil, fmt.Errorf("database version is v%d, Subnet-EVM %s only supports v%d", *bcVersion, params.VersionWithMeta, core.BlockChainVersion)
 		} else if bcVersion == nil || *bcVersion < core.BlockChainVersion {
 			log.Warn("Upgrade blockchain database version", "from", dbVer, "to", core.BlockChainVersion)
 			rawdb.WriteDatabaseVersion(chainDb, core.BlockChainVersion)
@@ -194,14 +194,12 @@ func New(
 	var (
 		vmConfig = vm.Config{
 			EnablePreimageRecording: config.EnablePreimageRecording,
-			AllowUnfinalizedQueries: config.AllowUnfinalizedQueries,
 		}
 		cacheConfig = &core.CacheConfig{
 			TrieCleanLimit:                  config.TrieCleanCache,
-			TrieCleanJournal:                config.TrieCleanJournal,
-			TrieCleanRejournal:              config.TrieCleanRejournal,
 			TrieDirtyLimit:                  config.TrieDirtyCache,
 			TrieDirtyCommitTarget:           config.TrieDirtyCommitTarget,
+			TriePrefetcherParallelism:       config.TriePrefetcherParallelism,
 			Pruning:                         config.Pruning,
 			AcceptorQueueLimit:              config.AcceptorQueueLimit,
 			CommitInterval:                  config.CommitInterval,
@@ -210,35 +208,47 @@ func New(
 			AllowMissingTries:               config.AllowMissingTries,
 			SnapshotDelayInit:               config.SnapshotDelayInit,
 			SnapshotLimit:                   config.SnapshotCache,
-			SnapshotAsync:                   config.SnapshotAsync,
+			SnapshotWait:                    config.SnapshotWait,
 			SnapshotVerify:                  config.SnapshotVerify,
-			SkipSnapshotRebuild:             config.SkipSnapshotRebuild,
+			SnapshotNoBuild:                 config.SkipSnapshotRebuild,
 			Preimages:                       config.Preimages,
 			AcceptedCacheSize:               config.AcceptedCacheSize,
 			TxLookupLimit:                   config.TxLookupLimit,
+			SkipTxIndexing:                  config.SkipTxIndexing,
 		}
 	)
 
 	if err := eth.precheckPopulateMissingTries(); err != nil {
 		return nil, err
 	}
-
 	var err error
-	eth.blockchain, err = core.NewBlockChain(chainDb, cacheConfig, chainConfig, eth.engine, vmConfig, lastAcceptedHash)
+	eth.blockchain, err = core.NewBlockChain(chainDb, cacheConfig, config.Genesis, eth.engine, vmConfig, lastAcceptedHash, config.SkipUpgradeCheck)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := eth.handleOfflinePruning(cacheConfig, chainConfig, vmConfig, lastAcceptedHash); err != nil {
+	// Free airdrop data to save memory usage
+	defer func() {
+		config.Genesis.AirdropData = nil
+	}()
+
+	if err := eth.handleOfflinePruning(cacheConfig, config.Genesis, vmConfig, lastAcceptedHash); err != nil {
 		return nil, err
 	}
 
 	eth.bloomIndexer.Start(eth.blockchain)
 
-	config.TxPool.Journal = ""
-	eth.txPool = core.NewTxPool(config.TxPool, chainConfig, eth.blockchain)
+	config.BlobPool.Datadir = ""
+	blobPool := blobpool.New(config.BlobPool, &chainWithFinalBlock{eth.blockchain})
 
-	eth.miner = miner.New(eth, &config.Miner, chainConfig, eth.EventMux(), eth.engine, clock)
+	legacyPool := legacypool.New(config.TxPool, eth.blockchain)
+
+	eth.txPool, err = txpool.New(new(big.Int).SetUint64(config.TxPool.PriceLimit), eth.blockchain, []txpool.SubPool{legacyPool, blobPool})
+	if err != nil {
+		return nil, err
+	}
+
+	eth.miner = miner.New(eth, &config.Miner, eth.blockchain.Config(), eth.EventMux(), eth.engine, clock)
 
 	allowUnprotectedTxHashes := make(map[common.Hash]struct{})
 	for _, txHash := range config.AllowUnprotectedTxHashes {
@@ -249,6 +259,7 @@ func New(
 		extRPCEnabled:            stack.Config().ExtRPCEnabled(),
 		allowUnprotectedTxs:      config.AllowUnprotectedTxs,
 		allowUnprotectedTxHashes: allowUnprotectedTxHashes,
+		allowUnfinalizedQueries:  config.AllowUnfinalizedQueries,
 		eth:                      eth,
 	}
 	if config.AllowUnprotectedTxs {
@@ -295,7 +306,7 @@ func (s *Ethereum) APIs() []rpc.API {
 			Name:      "eth",
 		}, {
 			Namespace: "eth",
-			Service:   filters.NewFilterAPI(filterSystem, false /* isLightClient */),
+			Service:   filters.NewFilterAPI(filterSystem),
 			Name:      "eth-filter",
 		}, {
 			Namespace: "admin",
@@ -321,18 +332,6 @@ func (s *Ethereum) Etherbase() (eb common.Address, err error) {
 	if etherbase != (common.Address{}) {
 		return etherbase, nil
 	}
-	if wallets := s.AccountManager().Wallets(); len(wallets) > 0 {
-		if accounts := wallets[0].Accounts(); len(accounts) > 0 {
-			etherbase := accounts[0].Address
-
-			s.lock.Lock()
-			s.etherbase = etherbase
-			s.lock.Unlock()
-
-			log.Info("Etherbase automatically configured", "address", etherbase)
-			return etherbase, nil
-		}
-	}
 	return common.Address{}, fmt.Errorf("etherbase must be explicitly specified")
 }
 
@@ -349,7 +348,7 @@ func (s *Ethereum) Miner() *miner.Miner { return s.miner }
 
 func (s *Ethereum) AccountManager() *accounts.Manager { return s.accountManager }
 func (s *Ethereum) BlockChain() *core.BlockChain      { return s.blockchain }
-func (s *Ethereum) TxPool() *core.TxPool              { return s.txPool }
+func (s *Ethereum) TxPool() *txpool.TxPool            { return s.txPool }
 func (s *Ethereum) EventMux() *event.TypeMux          { return s.eventMux }
 func (s *Ethereum) Engine() consensus.Engine          { return s.engine }
 func (s *Ethereum) ChainDb() ethdb.Database           { return s.chainDb }
@@ -374,15 +373,18 @@ func (s *Ethereum) Start() {
 func (s *Ethereum) Stop() error {
 	s.bloomIndexer.Close()
 	close(s.closeBloomHandler)
-	s.txPool.Stop()
+	s.txPool.Close()
 	s.blockchain.Stop()
 	s.engine.Close()
 
 	// Clean shutdown marker as the last thing before closing db
 	s.shutdownTracker.Stop()
+	log.Info("Stopped shutdownTracker")
 
 	s.chainDb.Close()
+	log.Info("Closed chaindb")
 	s.eventMux.Stop()
+	log.Info("Stopped EventMux")
 	return nil
 }
 
@@ -420,7 +422,7 @@ func (s *Ethereum) precheckPopulateMissingTries() error {
 	return nil
 }
 
-func (s *Ethereum) handleOfflinePruning(cacheConfig *core.CacheConfig, chainConfig *params.ChainConfig, vmConfig vm.Config, lastAcceptedHash common.Hash) error {
+func (s *Ethereum) handleOfflinePruning(cacheConfig *core.CacheConfig, gspec *core.Genesis, vmConfig vm.Config, lastAcceptedHash common.Hash) error {
 	if s.config.OfflinePruning && !s.config.Pruning {
 		return core.ErrRefuseToCorruptArchiver
 	}
@@ -452,7 +454,12 @@ func (s *Ethereum) handleOfflinePruning(cacheConfig *core.CacheConfig, chainConf
 	s.blockchain.Stop()
 	s.blockchain = nil
 	log.Info("Starting offline pruning", "dataDir", s.config.OfflinePruningDataDirectory, "bloomFilterSize", s.config.OfflinePruningBloomFilterSize)
-	pruner, err := pruner.NewPruner(s.chainDb, s.config.OfflinePruningDataDirectory, s.config.OfflinePruningBloomFilterSize)
+	prunerConfig := pruner.Config{
+		BloomSize: s.config.OfflinePruningBloomFilterSize,
+		Datadir:   s.config.OfflinePruningDataDirectory,
+	}
+
+	pruner, err := pruner.NewPruner(s.chainDb, prunerConfig)
 	if err != nil {
 		return fmt.Errorf("failed to create new pruner with data directory: %s, size: %d, due to: %w", s.config.OfflinePruningDataDirectory, s.config.OfflinePruningBloomFilterSize, err)
 	}
@@ -461,7 +468,7 @@ func (s *Ethereum) handleOfflinePruning(cacheConfig *core.CacheConfig, chainConf
 	}
 	// Note: Time Marker is written inside of [Prune] before compaction begins
 	// (considered an optional optimization)
-	s.blockchain, err = core.NewBlockChain(s.chainDb, cacheConfig, chainConfig, s.engine, vmConfig, lastAcceptedHash)
+	s.blockchain, err = core.NewBlockChain(s.chainDb, cacheConfig, gspec, s.engine, vmConfig, lastAcceptedHash, s.config.SkipUpgradeCheck)
 	if err != nil {
 		return fmt.Errorf("failed to re-initialize blockchain after offline pruning: %w", err)
 	}

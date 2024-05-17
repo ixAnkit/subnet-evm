@@ -42,7 +42,9 @@ func (obj *Header) EncodeRLP(_w io.Writer) error {
 	w.WriteBytes(obj.Nonce[:])
 	_tmp1 := obj.BaseFee != nil
 	_tmp2 := obj.BlockGasCost != nil
-	if _tmp1 || _tmp2 {
+	_tmp3 := obj.BlobGasUsed != nil
+	_tmp4 := obj.ExcessBlobGas != nil
+	if _tmp1 || _tmp2 || _tmp3 || _tmp4 {
 		if obj.BaseFee == nil {
 			w.Write(rlp.EmptyString)
 		} else {
@@ -52,7 +54,7 @@ func (obj *Header) EncodeRLP(_w io.Writer) error {
 			w.WriteBigInt(obj.BaseFee)
 		}
 	}
-	if _tmp2 {
+	if _tmp2 || _tmp3 || _tmp4 {
 		if obj.BlockGasCost == nil {
 			w.Write(rlp.EmptyString)
 		} else {
@@ -60,6 +62,20 @@ func (obj *Header) EncodeRLP(_w io.Writer) error {
 				return rlp.ErrNegativeBigInt
 			}
 			w.WriteBigInt(obj.BlockGasCost)
+		}
+	}
+	if _tmp3 || _tmp4 {
+		if obj.BlobGasUsed == nil {
+			w.Write([]byte{0x80})
+		} else {
+			w.WriteUint64((*obj.BlobGasUsed))
+		}
+	}
+	if _tmp4 {
+		if obj.ExcessBlobGas == nil {
+			w.Write([]byte{0x80})
+		} else {
+			w.WriteUint64((*obj.ExcessBlobGas))
 		}
 	}
 	w.ListEnd(_tmp0)

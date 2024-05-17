@@ -23,9 +23,9 @@ import (
 	"github.com/MetalBlockchain/subnet-evm/core/bloombits"
 	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
 	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/ethdb"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/bitutil"
+	"github.com/ethereum/go-ethereum/ethdb"
 )
 
 const (

@@ -33,43 +33,42 @@ import (
 	"path/filepath"
 	"strings"
 
+	_ "embed"
+
 	"github.com/MetalBlockchain/subnet-evm/accounts/abi/bind"
+	"github.com/MetalBlockchain/subnet-evm/accounts/abi/bind/precompilebind"
+	"github.com/MetalBlockchain/subnet-evm/cmd/utils"
 	"github.com/MetalBlockchain/subnet-evm/internal/flags"
-	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/urfave/cli/v2"
 )
 
-var (
-	// Git SHA1 commit hash of the release (set via linker flags)
-	gitCommit = ""
-	gitDate   = ""
-
-	app *cli.App
-)
+//go:embed template-readme.md
+var readme string
 
 var (
 	// Flags needed by abigen
 	abiFlag = &cli.StringFlag{
 		Name:  "abi",
-		Usage: "Path to the Ethereum contract ABI json to bind, - for STDIN",
+		Usage: "Path to the contract ABI json to generate, - for STDIN",
 	}
 	typeFlag = &cli.StringFlag{
 		Name:  "type",
-		Usage: "Struct name for the precompile (default = ABI name)",
+		Usage: "Struct name for the precompile (default = {abi file name})",
 	}
 	pkgFlag = &cli.StringFlag{
 		Name:  "pkg",
-		Usage: "Package name to generate the precompile into (default = precompile)",
+		Usage: "Go package name to generate the precompile into (default = {type})",
 	}
 	outFlag = &cli.StringFlag{
 		Name:  "out",
-		Usage: "Output file for the generated precompile (default = STDOUT)",
+		Usage: "Output folder for the generated precompile files, - for STDOUT (default = ./precompile/contracts/{pkg}). Test files won't be generated if STDOUT is used",
 	}
 )
 
+var app = flags.NewApp("subnet-evm precompile generator tool")
+
 func init() {
-	app = flags.NewApp(gitCommit, gitDate, "subnet-evm precompile generator tool")
 	app.Name = "precompilegen"
 	app.Flags = []cli.Flag{
 		abiFlag,
@@ -81,17 +80,15 @@ func init() {
 }
 
 func precompilegen(c *cli.Context) error {
-	if !c.IsSet(outFlag.Name) && !c.IsSet(typeFlag.Name) {
+	outFlagStr := c.String(outFlag.Name)
+	isOutStdout := outFlagStr == "-"
+
+	if isOutStdout && !c.IsSet(typeFlag.Name) {
 		utils.Fatalf("type (--type) should be set explicitly for STDOUT ")
-	}
-	pkg := pkgFlag.Name
-	if pkg == "" {
-		pkg = "precompile"
 	}
 	lang := bind.LangGo
 	// If the entire solidity code was specified, build and bind based on that
 	var (
-		abis    []string
 		bins    []string
 		types   []string
 		sigs    []map[string]string
@@ -106,6 +103,7 @@ func precompilegen(c *cli.Context) error {
 		abi []byte
 		err error
 	)
+
 	input := c.String(abiFlag.Name)
 	if input == "-" {
 		abi, err = io.ReadAll(os.Stdin)
@@ -115,8 +113,9 @@ func precompilegen(c *cli.Context) error {
 	if err != nil {
 		utils.Fatalf("Failed to read input ABI: %v", err)
 	}
-	abis = append(abis, string(abi))
+
 	bins = append(bins, "")
+
 	kind := c.String(typeFlag.Name)
 	if kind == "" {
 		fn := filepath.Base(input)
@@ -125,23 +124,67 @@ func precompilegen(c *cli.Context) error {
 	}
 	types = append(types, kind)
 
+	pkg := c.String(pkgFlag.Name)
+	if pkg == "" {
+		pkg = strings.ToLower(kind)
+	}
+
+	if outFlagStr == "" {
+		outFlagStr = filepath.Join("./precompile/contracts", pkg)
+	}
+
+	abifilename := ""
+	abipath := ""
+	// we should not generate the abi file if output is set to stdout
+	if !isOutStdout {
+		// get file name from the output path
+		abifilename = "contract.abi"
+		abipath = filepath.Join(outFlagStr, abifilename)
+	}
+	// if output is set to stdout, we should not generate the test codes
+	generateTests := !isOutStdout
+
 	// Generate the contract precompile
-	code, err := bind.Bind(types, abis, bins, sigs, pkg, lang, libs, aliases, true)
+	bindedFiles, err := precompilebind.PrecompileBind(types, string(abi), bins, sigs, pkg, lang, libs, aliases, abifilename, generateTests)
 	if err != nil {
-		utils.Fatalf("Failed to generate ABI precompile: %v", err)
+		utils.Fatalf("Failed to generate precompile: %v", err)
 	}
 
 	// Either flush it out to a file or display on the standard output
-	if !c.IsSet(outFlag.Name) {
-		fmt.Printf("%s\n", code)
+	// Skip displaying test codes here.
+	if isOutStdout {
+		for _, file := range bindedFiles {
+			if !file.IsTest {
+				fmt.Printf("-----file: %s-----\n", file.FileName)
+				fmt.Printf("%s\n", file.Content)
+			}
+		}
 		return nil
 	}
 
-	if err := os.WriteFile(c.String(outFlag.Name), []byte(code), 0o600); err != nil {
-		utils.Fatalf("Failed to write ABI precompile: %v", err)
+	if _, err := os.Stat(outFlagStr); os.IsNotExist(err) {
+		os.MkdirAll(outFlagStr, 0o700) // Create your file
 	}
 
-	fmt.Println("Precompile Generation was a success!")
+	for _, file := range bindedFiles {
+		outputPath := filepath.Join(outFlagStr, file.FileName)
+		if err := os.WriteFile(outputPath, []byte(file.Content), 0o600); err != nil {
+			utils.Fatalf("Failed to write generated file %s: %v", file.FileName, err)
+		}
+	}
+
+	// Write the ABI to the output folder
+	if err := os.WriteFile(abipath, abi, 0o600); err != nil {
+		utils.Fatalf("Failed to write ABI: %v", err)
+	}
+
+	// Write the README to the output folder
+	readmeOut := filepath.Join(outFlagStr, "README.md")
+	if err := os.WriteFile(readmeOut, []byte(readme), 0o600); err != nil {
+		utils.Fatalf("Failed to write README: %v", err)
+	}
+
+	fmt.Println("Precompile files generated successfully at: ", outFlagStr)
 	return nil
 }
 

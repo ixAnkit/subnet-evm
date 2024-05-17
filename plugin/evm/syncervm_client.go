@@ -18,12 +18,12 @@ import (
 	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
 	"github.com/MetalBlockchain/subnet-evm/core/state/snapshot"
 	"github.com/MetalBlockchain/subnet-evm/eth"
-	"github.com/MetalBlockchain/subnet-evm/ethdb"
 	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
 	syncclient "github.com/MetalBlockchain/subnet-evm/sync/client"
 	"github.com/MetalBlockchain/subnet-evm/sync/statesync"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/log"
 )
 
@@ -42,7 +42,8 @@ type stateSyncClientConfig struct {
 	// Specifies the number of blocks behind the latest state summary that the chain must be
 	// in order to prefer performing state sync over falling back to the normal bootstrapping
 	// algorithm.
-	stateSyncMinBlocks uint64
+	stateSyncMinBlocks   uint64
+	stateSyncRequestSize uint16 // number of key/value pairs to ask peers for per request
 
 	lastAcceptedHeight uint64
 
@@ -257,7 +258,7 @@ func (client *stateSyncerClient) syncBlocks(ctx context.Context, fromHash common
 		}
 		blocks, err := client.client.GetBlocks(ctx, nextHash, nextHeight, parentsPerRequest)
 		if err != nil {
-			log.Warn("could not get blocks from peer", "err", err, "nextHash", nextHash, "remaining", i+1)
+			log.Error("could not get blocks from peer", "err", err, "nextHash", nextHash, "remaining", i+1)
 			return err
 		}
 		for _, block := range blocks {
@@ -283,6 +284,7 @@ func (client *stateSyncerClient) syncStateTrie(ctx context.Context) error {
 		DB:                       client.chaindb,
 		MaxOutstandingCodeHashes: statesync.DefaultMaxOutstandingCodeHashes,
 		NumCodeFetchingWorkers:   statesync.DefaultNumCodeFetchingWorkers,
+		RequestSize:              client.stateSyncRequestSize,
 	})
 	if err != nil {
 		return err

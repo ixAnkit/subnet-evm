@@ -29,9 +29,12 @@ package tests
 import (
 	"fmt"
 	"math/big"
+	"os"
 	"sort"
+	"strings"
 
 	"github.com/MetalBlockchain/subnet-evm/params"
+	"github.com/MetalBlockchain/subnet-evm/utils"
 )
 
 // Forks table defines supported forks and their chain config.
@@ -94,6 +97,18 @@ var Forks = map[string]*params.ChainConfig{
 		PetersburgBlock:     big.NewInt(0),
 		IstanbulBlock:       big.NewInt(0),
 	},
+	"MuirGlacier": {
+		ChainID:             big.NewInt(1),
+		HomesteadBlock:      big.NewInt(0),
+		EIP150Block:         big.NewInt(0),
+		EIP155Block:         big.NewInt(0),
+		EIP158Block:         big.NewInt(0),
+		ByzantiumBlock:      big.NewInt(0),
+		ConstantinopleBlock: big.NewInt(0),
+		PetersburgBlock:     big.NewInt(0),
+		IstanbulBlock:       big.NewInt(0),
+		MuirGlacierBlock:    big.NewInt(0),
+	},
 	"FrontierToHomesteadAt5": {
 		ChainID:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(5),
@@ -141,6 +156,18 @@ var Forks = map[string]*params.ChainConfig{
 		PetersburgBlock:     big.NewInt(0),
 		IstanbulBlock:       big.NewInt(5),
 	},
+	"Pre-SubnetEVM": {
+		ChainID:             big.NewInt(1),
+		HomesteadBlock:      big.NewInt(0),
+		EIP150Block:         big.NewInt(0),
+		EIP155Block:         big.NewInt(0),
+		EIP158Block:         big.NewInt(0),
+		ByzantiumBlock:      big.NewInt(0),
+		ConstantinopleBlock: big.NewInt(0),
+		PetersburgBlock:     big.NewInt(0),
+		IstanbulBlock:       big.NewInt(0),
+		MuirGlacierBlock:    big.NewInt(0),
+	},
 	"SubnetEVM": {
 		ChainID:             big.NewInt(1),
 		HomesteadBlock:      big.NewInt(0),
@@ -152,12 +179,43 @@ var Forks = map[string]*params.ChainConfig{
 		PetersburgBlock:     big.NewInt(0),
 		IstanbulBlock:       big.NewInt(0),
 		NetworkUpgrades: params.NetworkUpgrades{
-			SubnetEVMTimestamp: big.NewInt(0),
+			SubnetEVMTimestamp: utils.NewUint64(0),
+		},
+	},
+	"Durango": {
+		ChainID:             big.NewInt(1),
+		HomesteadBlock:      big.NewInt(0),
+		EIP150Block:         big.NewInt(0),
+		EIP155Block:         big.NewInt(0),
+		EIP158Block:         big.NewInt(0),
+		ByzantiumBlock:      big.NewInt(0),
+		ConstantinopleBlock: big.NewInt(0),
+		PetersburgBlock:     big.NewInt(0),
+		IstanbulBlock:       big.NewInt(0),
+		NetworkUpgrades: params.NetworkUpgrades{
+			SubnetEVMTimestamp: utils.NewUint64(0),
+			DurangoTimestamp:   utils.NewUint64(0),
+		},
+	},
+	"Cancun": {
+		ChainID:             big.NewInt(1),
+		HomesteadBlock:      big.NewInt(0),
+		EIP150Block:         big.NewInt(0),
+		EIP155Block:         big.NewInt(0),
+		EIP158Block:         big.NewInt(0),
+		ByzantiumBlock:      big.NewInt(0),
+		ConstantinopleBlock: big.NewInt(0),
+		PetersburgBlock:     big.NewInt(0),
+		IstanbulBlock:       big.NewInt(0),
+		CancunTime:          utils.NewUint64(0),
+		NetworkUpgrades: params.NetworkUpgrades{
+			SubnetEVMTimestamp: utils.NewUint64(0),
+			DurangoTimestamp:   utils.NewUint64(0),
 		},
 	},
 }
 
-// Returns the set of defined fork names
+// AvailableForks returns the set of defined fork names
 func AvailableForks() []string {
 	var availableForks []string
 	for k := range Forks {
@@ -174,4 +232,24 @@ type UnsupportedForkError struct {
 
 func (e UnsupportedForkError) Error() string {
 	return fmt.Sprintf("unsupported fork %q", e.Name)
+}
+
+func GetRepoRootPath(suffix string) string {
+	// - When executed via a test binary, the working directory will be wherever
+	// the binary is executed from, but scripts should require execution from
+	// the repo root.
+	//
+	// - When executed via ginkgo (nicer for development + supports
+	// parallel execution) the working directory will always be the
+	// target path (e.g. [repo root]./tests/warp) and getting the repo
+	// root will require stripping the target path suffix.
+	//
+	// TODO(marun) Avoid relying on the current working directory to find test
+	// dependencies by embedding data where possible (e.g. for genesis) and
+	// explicitly configuring paths for execution.
+	cwd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	return strings.TrimSuffix(cwd, suffix)
 }

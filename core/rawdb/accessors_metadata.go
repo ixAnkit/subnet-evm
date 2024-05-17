@@ -30,9 +30,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/ethdb"
 	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/rlp"
 )

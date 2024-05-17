@@ -5,19 +5,20 @@ package evm
 
 import (
 	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/snow"
+	"github.com/MetalBlockchain/metalgo/utils/logging"
 	"github.com/MetalBlockchain/metalgo/vms"
 )
 
 var (
 	// ID this VM should be referenced by
-	ID = ids.ID{'s', 'u', 'b', 'n', 'e', 't', 'e', 'v', 'm'}
+	IDStr = "subnetevm"
+	ID    = ids.ID{'s', 'u', 'b', 'n', 'e', 't', 'e', 'v', 'm'}
 
 	_ vms.Factory = &Factory{}
 )
 
 type Factory struct{}
 
-func (f *Factory) New(*snow.Context) (interface{}, error) {
+func (*Factory) New(logging.Logger) (interface{}, error) {
 	return &VM{}, nil
 }

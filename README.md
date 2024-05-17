@@ -10,7 +10,54 @@ This chain implements the Ethereum Virtual Machine and supports Solidity smart c
 
 ## Building
 
-The Subnet EVM runs in a separate process from the main MetalGo process and communicates with it over a local gRPC connection.
+The Subnet EVM runs in a separate process from the main AvalancheGo process and communicates with it over a local gRPC connection.
+
+### AvalancheGo Compatibility
+
+```text
+[v0.1.0] AvalancheGo@v1.7.0-v1.7.4 (Protocol Version: 9)
+[v0.1.1-v0.1.2] AvalancheGo@v1.7.5-v1.7.6 (Protocol Version: 10)
+[v0.2.0] AvalancheGo@v1.7.7-v1.7.9 (Protocol Version: 11)
+[v0.2.1] AvalancheGo@v1.7.10 (Protocol Version: 12)
+[v0.2.2] AvalancheGo@v1.7.11-v1.7.12 (Protocol Version: 14)
+[v0.2.3] AvalancheGo@v1.7.13-v1.7.16 (Protocol Version: 15)
+[v0.2.4] AvalancheGo@v1.7.13-v1.7.16 (Protocol Version: 15)
+[v0.2.5] AvalancheGo@v1.7.13-v1.7.16 (Protocol Version: 15)
+[v0.2.6] AvalancheGo@v1.7.13-v1.7.16 (Protocol Version: 15)
+[v0.2.7] AvalancheGo@v1.7.13-v1.7.16 (Protocol Version: 15)
+[v0.2.8] AvalancheGo@v1.7.13-v1.7.18 (Protocol Version: 15)
+[v0.2.9] AvalancheGo@v1.7.13-v1.7.18 (Protocol Version: 15)
+[v0.3.0] AvalancheGo@v1.8.0-v1.8.6 (Protocol Version: 16)
+[v0.4.0] AvalancheGo@v1.9.0 (Protocol Version: 17)
+[v0.4.1] AvalancheGo@v1.9.1 (Protocol Version: 18)
+[v0.4.2] AvalancheGo@v1.9.1 (Protocol Version: 18)
+[v0.4.3] AvalancheGo@v1.9.2-v1.9.3 (Protocol Version: 19)
+[v0.4.4] AvalancheGo@v1.9.2-v1.9.3 (Protocol Version: 19)
+[v0.4.5] AvalancheGo@v1.9.4 (Protocol Version: 20)
+[v0.4.6] AvalancheGo@v1.9.4 (Protocol Version: 20)
+[v0.4.7] AvalancheGo@v1.9.5 (Protocol Version: 21)
+[v0.4.8] AvalancheGo@v1.9.6-v1.9.8 (Protocol Version: 22)
+[v0.4.9] AvalancheGo@v1.9.9 (Protocol Version: 23)
+[v0.4.10] AvalancheGo@v1.9.9 (Protocol Version: 23)
+[v0.4.11] AvalancheGo@v1.9.10-v1.9.16 (Protocol Version: 24)
+[v0.4.12] AvalancheGo@v1.9.10-v1.9.16 (Protocol Version: 24)
+[v0.5.0] AvalancheGo@v1.10.0 (Protocol Version: 25)
+[v0.5.1] AvalancheGo@v1.10.1-v1.10.4 (Protocol Version: 26)
+[v0.5.2] AvalancheGo@v1.10.1-v1.10.4 (Protocol Version: 26)
+[v0.5.3] AvalancheGo@v1.10.5-v1.10.8 (Protocol Version: 27)
+[v0.5.4] AvalancheGo@v1.10.9-v1.10.12 (Protocol Version: 28)
+[v0.5.5] AvalancheGo@v1.10.9-v1.10.12 (Protocol Version: 28)
+[v0.5.6] AvalancheGo@v1.10.9-v1.10.12 (Protocol Version: 28)
+[v0.5.7] AvalancheGo@v1.10.13-v1.10.14 (Protocol Version: 29)
+[v0.5.8] AvalancheGo@v1.10.13-v1.10.14 (Protocol Version: 29)
+[v0.5.9] AvalancheGo@v1.10.15-v1.10.17 (Protocol Version: 30)
+[v0.5.10] AvalancheGo@v1.10.15-v1.10.17 (Protocol Version: 30)
+[v0.5.11] AvalancheGo@v1.10.18-v1.10.19 (Protocol Version: 31)
+[v0.6.0] AvalancheGo@v1.11.0-v1.11.1 (Protocol Version: 33)
+[v0.6.1] AvalancheGo@v1.11.0-v1.11.1 (Protocol Version: 33)
+[v0.6.2] AvalancheGo@v1.11.2 (Protocol Version: 34)
+[v0.6.3] AvalancheGo@v1.11.3 (Protocol Version: 35)
+```
 
 ## API
 
@@ -47,9 +94,9 @@ To support these changes, there have been a number of changes to the SubnetEVM b
 
 ### Clone Subnet-evm
 
-First install Go 1.18.1 or later. Follow the instructions [here](https://golang.org/doc/install). You can verify by running `go version`.
+First install Go 1.21.7 or later. Follow the instructions [here](https://go.dev/doc/install). You can verify by running `go version`.
 
-Set `$GOPATH` environment variable properly for Go to look for Go Workspaces. Please read [this](https://go.dev/doc/gopath_code) for details. You can verify by running `echo $GOPATH`.
+Set `$GOPATH` environment variable properly for Go to look for Go Workspaces. Please read [this](https://go.dev/doc/code) for details. You can verify by running `echo $GOPATH`.
 
 As a few software will be installed into `$GOPATH/bin`, please make sure that `$GOPATH/bin` is in your `$PATH`, otherwise, you may get error running the commands below.
 
