@@ -53,7 +53,7 @@ require (
 
 require (
 	github.com/DataDog/zstd v1.5.2 // indirect
-	github.com/cryft-labs/coreth v0.13.2-rc.3 // indirect
+	github.com/cryft-labs/coreth v1.0.0-rc // indirect
 	github.com/NYTimes/gziphandler v1.1.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bits-and-blooms/bitset v1.7.0 // indirect
