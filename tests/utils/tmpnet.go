@@ -16,6 +16,7 @@ import (
 
 func NewTmpnetNodes(count int) []*tmpnet.Node {
 	nodes := make([]*tmpnet.Node, count)
+	"encoding/json"
 	for i := range nodes {
 		node := tmpnet.NewNode("")
 		node.EnsureKeys()
