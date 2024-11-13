@@ -30,9 +30,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

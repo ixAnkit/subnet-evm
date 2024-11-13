@@ -21,11 +21,11 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/internal/blocktest"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/internal/blocktest"
 )
 
 var newTestHasher = blocktest.NewHasher

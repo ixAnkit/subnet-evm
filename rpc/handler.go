@@ -35,8 +35,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/metrics"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/metrics"
 	"golang.org/x/time/rate"
 )
 

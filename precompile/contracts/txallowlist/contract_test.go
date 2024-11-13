@@ -6,8 +6,8 @@ package txallowlist
 import (
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/core/state"
-	"github.com/MetalBlockchain/subnet-evm/precompile/allowlist"
+	"github.com/shubhamdubey02/subnet-evm/core/state"
+	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
 )
 
 func TestTxAllowListRun(t *testing.T) {

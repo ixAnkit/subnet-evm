@@ -33,7 +33,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 type blockAndState struct {

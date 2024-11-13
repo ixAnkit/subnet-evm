@@ -34,14 +34,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/accounts/abi"
-	"github.com/MetalBlockchain/subnet-evm/accounts/abi/bind"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/interfaces"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
+	"github.com/shubhamdubey02/subnet-evm/accounts/abi/bind"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/interfaces"
 	"github.com/stretchr/testify/assert"
 )
 

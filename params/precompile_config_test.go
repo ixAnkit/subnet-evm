@@ -8,14 +8,14 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/commontype"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contracts/deployerallowlist"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contracts/feemanager"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contracts/nativeminter"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contracts/rewardmanager"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contracts/txallowlist"
-	"github.com/MetalBlockchain/subnet-evm/utils"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contracts/deployerallowlist"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contracts/feemanager"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contracts/nativeminter"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contracts/rewardmanager"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contracts/txallowlist"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 	"github.com/stretchr/testify/require"
 )
 

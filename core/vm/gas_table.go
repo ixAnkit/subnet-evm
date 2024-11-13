@@ -29,10 +29,10 @@ package vm
 import (
 	"errors"
 
-	"github.com/MetalBlockchain/subnet-evm/params"
-	"github.com/MetalBlockchain/subnet-evm/vmerrs"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
+	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/vmerrs"
 )
 
 // memoryGasCost calculates the quadratic gas for memory expansion. It does so

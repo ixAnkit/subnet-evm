@@ -37,10 +37,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/accounts"
 	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/accounts"
 	"golang.org/x/exp/slices"
 )
 

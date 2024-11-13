@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/MetalBlockchain/metalgo/utils/logging"
-	"github.com/MetalBlockchain/metalgo/utils/ulimit"
-	"github.com/MetalBlockchain/metalgo/vms/rpcchainvm"
+	"github.com/cryft-labs/cryftgo/utils/logging"
+	"github.com/cryft-labs/cryftgo/utils/ulimit"
+	"github.com/cryft-labs/cryftgo/vms/rpcchainvm"
 
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm"
 )
 
 func Run(versionStr string) {

@@ -19,9 +19,9 @@ package types
 import (
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/holiman/uint256"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 // BlobTx represents an EIP-4844 transaction.

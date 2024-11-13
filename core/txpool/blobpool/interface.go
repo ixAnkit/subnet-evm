@@ -29,11 +29,11 @@ package blobpool
 import (
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/commontype"
-	"github.com/MetalBlockchain/subnet-evm/core/state"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/shubhamdubey02/subnet-evm/core/state"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 // BlockChain defines the minimal set of methods needed to back a blob pool with

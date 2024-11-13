@@ -29,12 +29,12 @@ package ethconfig
 import (
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/core"
-	"github.com/MetalBlockchain/subnet-evm/core/txpool/blobpool"
-	"github.com/MetalBlockchain/subnet-evm/core/txpool/legacypool"
-	"github.com/MetalBlockchain/subnet-evm/eth/gasprice"
-	"github.com/MetalBlockchain/subnet-evm/miner"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core"
+	"github.com/shubhamdubey02/subnet-evm/core/txpool/blobpool"
+	"github.com/shubhamdubey02/subnet-evm/core/txpool/legacypool"
+	"github.com/shubhamdubey02/subnet-evm/eth/gasprice"
+	"github.com/shubhamdubey02/subnet-evm/miner"
 )
 
 // DefaultFullGPOConfig contains default gasprice oracle settings for full node.

@@ -34,11 +34,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/core/state"
-	"github.com/MetalBlockchain/subnet-evm/core/vm"
-	"github.com/MetalBlockchain/subnet-evm/eth/tracers"
-	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/state"
+	"github.com/shubhamdubey02/subnet-evm/core/vm"
+	"github.com/shubhamdubey02/subnet-evm/eth/tracers"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 type account struct{}

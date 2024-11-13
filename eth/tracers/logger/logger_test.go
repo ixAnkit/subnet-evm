@@ -22,11 +22,11 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
-	"github.com/MetalBlockchain/subnet-evm/core/state"
-	"github.com/MetalBlockchain/subnet-evm/core/vm"
-	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
+	"github.com/shubhamdubey02/subnet-evm/core/state"
+	"github.com/shubhamdubey02/subnet-evm/core/vm"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 type dummyContractRef struct {

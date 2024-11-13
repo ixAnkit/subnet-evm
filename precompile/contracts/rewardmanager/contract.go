@@ -11,11 +11,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/MetalBlockchain/subnet-evm/accounts/abi"
-	"github.com/MetalBlockchain/subnet-evm/constants"
-	"github.com/MetalBlockchain/subnet-evm/precompile/allowlist"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
-	"github.com/MetalBlockchain/subnet-evm/vmerrs"
+	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
+	"github.com/shubhamdubey02/subnet-evm/constants"
+	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/shubhamdubey02/subnet-evm/vmerrs"
 
 	"github.com/ethereum/go-ethereum/common"
 )

@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/MetalBlockchain/metalgo/codec"
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/codec"
+	"github.com/cryft-labs/cryftgo/ids"
 )
 
 // Request represents a Network request type

@@ -10,14 +10,14 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/MetalBlockchain/subnet-evm/commontype"
-	"github.com/MetalBlockchain/subnet-evm/constants"
-	"github.com/MetalBlockchain/subnet-evm/core/state"
-	"github.com/MetalBlockchain/subnet-evm/precompile/allowlist"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
-	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
-	"github.com/MetalBlockchain/subnet-evm/precompile/testutils"
-	"github.com/MetalBlockchain/subnet-evm/vmerrs"
+	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/shubhamdubey02/subnet-evm/constants"
+	"github.com/shubhamdubey02/subnet-evm/core/state"
+	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/shubhamdubey02/subnet-evm/precompile/testutils"
+	"github.com/shubhamdubey02/subnet-evm/vmerrs"
 )
 
 var (

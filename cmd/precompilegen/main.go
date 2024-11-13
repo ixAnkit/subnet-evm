@@ -35,11 +35,11 @@ import (
 
 	_ "embed"
 
-	"github.com/MetalBlockchain/subnet-evm/accounts/abi/bind"
-	"github.com/MetalBlockchain/subnet-evm/accounts/abi/bind/precompilebind"
-	"github.com/MetalBlockchain/subnet-evm/cmd/utils"
-	"github.com/MetalBlockchain/subnet-evm/internal/flags"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/accounts/abi/bind"
+	"github.com/shubhamdubey02/subnet-evm/accounts/abi/bind/precompilebind"
+	"github.com/shubhamdubey02/subnet-evm/cmd/utils"
+	"github.com/shubhamdubey02/subnet-evm/internal/flags"
 	"github.com/urfave/cli/v2"
 )
 

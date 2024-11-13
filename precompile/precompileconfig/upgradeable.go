@@ -3,7 +3,7 @@
 
 package precompileconfig
 
-import "github.com/MetalBlockchain/subnet-evm/utils"
+import "github.com/shubhamdubey02/subnet-evm/utils"
 
 // Upgrade contains the timestamp for the upgrade along with
 // a boolean [Disable]. If [Disable] is set, the upgrade deactivates

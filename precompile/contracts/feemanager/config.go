@@ -4,10 +4,10 @@
 package feemanager
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/commontype"
-	"github.com/MetalBlockchain/subnet-evm/precompile/allowlist"
-	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
+	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
 )
 
 var _ precompileconfig.Config = &Config{}

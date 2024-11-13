@@ -8,11 +8,11 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/accounts/abi"
-	"github.com/MetalBlockchain/subnet-evm/commontype"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
+	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
+	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
 	"github.com/stretchr/testify/require"
 )
 

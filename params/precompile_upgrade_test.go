@@ -6,10 +6,10 @@ package params
 import (
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/precompile/contracts/deployerallowlist"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contracts/txallowlist"
-	"github.com/MetalBlockchain/subnet-evm/utils"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contracts/deployerallowlist"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contracts/txallowlist"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 	"github.com/stretchr/testify/require"
 )
 

@@ -6,8 +6,8 @@ package modules
 import (
 	"bytes"
 
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
 )
 
 type Module struct {

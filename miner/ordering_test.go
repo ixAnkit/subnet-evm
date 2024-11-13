@@ -33,10 +33,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/core/txpool"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/shubhamdubey02/subnet-evm/core/txpool"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 func TestTransactionPriceNonceSortLegacy(t *testing.T) {

@@ -31,8 +31,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 // Tests that transactions can be added to strict lists and list contents and

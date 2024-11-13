@@ -29,11 +29,11 @@ package trie
 import (
 	"fmt"
 
-	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/trie/trienode"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/trie/trienode"
 )
 
 // makeTestTrie create a sample test trie to test node-wise reconstruction.

@@ -4,9 +4,9 @@
 package handlers
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/core/state/snapshot"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/state/snapshot"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 type BlockProvider interface {

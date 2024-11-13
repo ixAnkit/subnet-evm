@@ -6,7 +6,7 @@ package peer
 import (
 	"testing"
 
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/ids"
 	"github.com/stretchr/testify/require"
 )
 

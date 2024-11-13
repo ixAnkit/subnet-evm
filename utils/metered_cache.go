@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/VictoriaMetrics/fastcache"
-	"github.com/MetalBlockchain/subnet-evm/metrics"
+	"github.com/shubhamdubey02/subnet-evm/metrics"
 )
 
 // MeteredCache wraps *fastcache.Cache and periodically pulls stats from it.

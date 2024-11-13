@@ -1,9 +1,9 @@
-module github.com/MetalBlockchain/subnet-evm
+module github.com/shubhamdubey02/subnet-evm
 
 go 1.21
 
 require (
-	github.com/MetalBlockchain/metalgo v1.11.3-rc.1
+	github.com/cryft-labs/cryftgo v1.0.0-rc
 	github.com/VictoriaMetrics/fastcache v1.10.0
 	github.com/cespare/cp v0.1.0
 	github.com/davecgh/go-spew v1.1.1

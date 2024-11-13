@@ -7,9 +7,9 @@ package feemanager
 import (
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/commontype"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
 )
 
 // FeeConfigChangedEventGasCost is the gas cost of a FeeConfigChanged event.

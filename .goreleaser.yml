@@ -5,7 +5,7 @@ builds:
     binary: subnet-evm
     flags:
       - -v
-    ldflags: -X github.com/MetalBlockchain/subnet-evm/plugin/evm.Version=v{{.Version}}
+    ldflags: -X github.com/shubhamdubey02/subnet-evm/plugin/evm.Version=v{{.Version}}
     goos:
       - linux
       - darwin

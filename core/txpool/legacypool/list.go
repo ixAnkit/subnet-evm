@@ -35,8 +35,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 // nonceHeap is a heap.Interface implementation over 64bit unsigned integers for

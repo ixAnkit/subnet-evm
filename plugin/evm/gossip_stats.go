@@ -3,7 +3,7 @@
 
 package evm
 
-import "github.com/MetalBlockchain/subnet-evm/metrics"
+import "github.com/shubhamdubey02/subnet-evm/metrics"
 
 var _ GossipStats = &gossipStats{}
 

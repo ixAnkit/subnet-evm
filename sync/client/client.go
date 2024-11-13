@@ -11,24 +11,24 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/ids"
 
-	"github.com/MetalBlockchain/subnet-evm/params"
-	"github.com/MetalBlockchain/subnet-evm/sync/client/stats"
+	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/sync/client/stats"
 
-	"github.com/MetalBlockchain/metalgo/codec"
-	"github.com/MetalBlockchain/metalgo/version"
+	"github.com/cryft-labs/cryftgo/codec"
+	"github.com/cryft-labs/cryftgo/version"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
 
-	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/peer"
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
-	"github.com/MetalBlockchain/subnet-evm/trie"
 	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/peer"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
+	"github.com/shubhamdubey02/subnet-evm/trie"
 )
 
 const (

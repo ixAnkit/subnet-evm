@@ -29,8 +29,8 @@ package legacypool
 import (
 	"sync"
 
-	"github.com/MetalBlockchain/subnet-evm/core/state"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/state"
 )
 
 // noncer is a tiny virtual state database to manage the executable nonces of

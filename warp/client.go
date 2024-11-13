@@ -7,9 +7,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/subnet-evm/rpc"
+	"github.com/cryft-labs/cryftgo/ids"
 	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/shubhamdubey02/subnet-evm/rpc"
 )
 
 var _ Client = (*client)(nil)

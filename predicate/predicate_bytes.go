@@ -6,8 +6,8 @@ package predicate
 import (
 	"fmt"
 
-	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 // EndByte is used as a delimiter for the bytes packed into a precompile predicate.

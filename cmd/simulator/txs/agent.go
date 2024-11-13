@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/cmd/simulator/metrics"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/cmd/simulator/metrics"
 )
 
 type THash interface {

@@ -34,9 +34,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/cmd/evm/internal/t8ntool"
-	"github.com/MetalBlockchain/subnet-evm/internal/cmdtest"
 	"github.com/docker/docker/pkg/reexec"
+	"github.com/shubhamdubey02/subnet-evm/cmd/evm/internal/t8ntool"
+	"github.com/shubhamdubey02/subnet-evm/internal/cmdtest"
 )
 
 func TestMain(m *testing.M) {

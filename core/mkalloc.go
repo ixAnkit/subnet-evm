@@ -42,8 +42,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/MetalBlockchain/subnet-evm/core"
 	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/shubhamdubey02/subnet-evm/core"
 	"golang.org/x/exp/slices"
 )
 

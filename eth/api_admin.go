@@ -34,9 +34,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/MetalBlockchain/subnet-evm/core"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/shubhamdubey02/subnet-evm/core"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 // AdminAPI is the collection of Ethereum full node related APIs for node

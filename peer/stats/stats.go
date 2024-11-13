@@ -6,7 +6,7 @@ package stats
 import (
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/metrics"
+	"github.com/shubhamdubey02/subnet-evm/metrics"
 )
 
 // RequestHandlerStats provides the interface for metrics for both app requests and cross chain requests.

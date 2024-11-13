@@ -30,9 +30,9 @@ import (
 	"encoding/json"
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/core/vm"
-	"github.com/MetalBlockchain/subnet-evm/eth/tracers"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/vm"
+	"github.com/shubhamdubey02/subnet-evm/eth/tracers"
 )
 
 func init() {

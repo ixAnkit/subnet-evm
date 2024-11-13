@@ -19,13 +19,13 @@ package trie
 import (
 	"errors"
 
-	"github.com/MetalBlockchain/subnet-evm/trie/triedb/hashdb"
-	"github.com/MetalBlockchain/subnet-evm/trie/triedb/pathdb"
-	"github.com/MetalBlockchain/subnet-evm/trie/trienode"
-	"github.com/MetalBlockchain/subnet-evm/trie/triestate"
-	"github.com/MetalBlockchain/subnet-evm/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/shubhamdubey02/subnet-evm/trie/triedb/hashdb"
+	"github.com/shubhamdubey02/subnet-evm/trie/triedb/pathdb"
+	"github.com/shubhamdubey02/subnet-evm/trie/trienode"
+	"github.com/shubhamdubey02/subnet-evm/trie/triestate"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 )
 
 const (
