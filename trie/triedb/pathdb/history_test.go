@@ -31,11 +31,11 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/trie/testutil"
-	"github.com/MetalBlockchain/subnet-evm/trie/triestate"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/trie/testutil"
+	"github.com/shubhamdubey02/subnet-evm/trie/triestate"
 )
 
 // randomStateSet generates a random state change set.

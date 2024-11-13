@@ -27,7 +27,7 @@
 package vm
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 func minSwapStack(n int) int {

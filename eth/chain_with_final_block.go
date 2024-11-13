@@ -1,8 +1,8 @@
 package eth
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/core"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/core"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 const blocksToKeep = 604_800 // Approx. 2 weeks worth of blocks assuming 2s block time

@@ -9,9 +9,9 @@ import (
 
 	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp"
 	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp/payload"
-	"github.com/MetalBlockchain/subnet-evm/accounts/abi"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
-	"github.com/MetalBlockchain/subnet-evm/vmerrs"
+	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/shubhamdubey02/subnet-evm/vmerrs"
 
 	_ "embed"
 

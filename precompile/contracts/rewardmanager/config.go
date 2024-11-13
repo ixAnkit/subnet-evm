@@ -7,9 +7,9 @@
 package rewardmanager
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/precompile/allowlist"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
-	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
+	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
 
 	"github.com/ethereum/go-ethereum/common"
 )

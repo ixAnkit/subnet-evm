@@ -26,7 +26,7 @@
 
 package blobpool
 
-import "github.com/MetalBlockchain/subnet-evm/metrics"
+import "github.com/shubhamdubey02/subnet-evm/metrics"
 
 var (
 	// datacapGauge tracks the user's configured capacity for the blob pool. It

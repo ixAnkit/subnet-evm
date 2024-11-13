@@ -33,10 +33,6 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/params"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
-	"github.com/MetalBlockchain/subnet-evm/precompile/modules"
-	"github.com/MetalBlockchain/subnet-evm/vmerrs"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/crypto"
@@ -44,6 +40,10 @@ import (
 	"github.com/ethereum/go-ethereum/crypto/bls12381"
 	"github.com/ethereum/go-ethereum/crypto/bn256"
 	"github.com/ethereum/go-ethereum/crypto/kzg4844"
+	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/shubhamdubey02/subnet-evm/precompile/modules"
+	"github.com/shubhamdubey02/subnet-evm/vmerrs"
 	"golang.org/x/crypto/ripemd160"
 )
 

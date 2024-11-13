@@ -30,8 +30,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/MetalBlockchain/subnet-evm/core/vm"
-	"github.com/MetalBlockchain/subnet-evm/tests"
+	"github.com/shubhamdubey02/subnet-evm/core/vm"
+	"github.com/shubhamdubey02/subnet-evm/tests"
 	"github.com/urfave/cli/v2"
 )
 

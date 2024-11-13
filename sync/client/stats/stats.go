@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/metrics"
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
+	"github.com/shubhamdubey02/subnet-evm/metrics"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
 )
 
 var (

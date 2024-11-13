@@ -27,10 +27,10 @@
 package trie
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/trie/trienode"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/trie/trienode"
 )
 
 // SecureTrie is the old name of StateTrie.

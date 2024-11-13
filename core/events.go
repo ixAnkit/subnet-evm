@@ -27,8 +27,8 @@
 package core
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 // NewTxsEvent is posted when a batch of transactions enter the transaction pool.

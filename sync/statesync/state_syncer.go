@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/MetalBlockchain/subnet-evm/core/state/snapshot"
-	syncclient "github.com/MetalBlockchain/subnet-evm/sync/client"
-	"github.com/MetalBlockchain/subnet-evm/trie"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/shubhamdubey02/subnet-evm/core/state/snapshot"
+	syncclient "github.com/shubhamdubey02/subnet-evm/sync/client"
+	"github.com/shubhamdubey02/subnet-evm/trie"
 	"golang.org/x/sync/errgroup"
 )
 

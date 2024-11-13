@@ -10,9 +10,9 @@ import (
 	"github.com/MetalBlockchain/metalgo/database"
 	"github.com/MetalBlockchain/metalgo/snow/engine/snowman/block"
 
-	"github.com/MetalBlockchain/subnet-evm/core"
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/core"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
 )
 
 type stateSyncServerConfig struct {

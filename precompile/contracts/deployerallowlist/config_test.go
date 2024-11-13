@@ -6,11 +6,11 @@ package deployerallowlist
 import (
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/precompile/allowlist"
-	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
-	"github.com/MetalBlockchain/subnet-evm/precompile/testutils"
-	"github.com/MetalBlockchain/subnet-evm/utils"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
+	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/shubhamdubey02/subnet-evm/precompile/testutils"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 	"go.uber.org/mock/gomock"
 )
 

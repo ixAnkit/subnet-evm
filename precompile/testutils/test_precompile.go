@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/commontype"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
-	"github.com/MetalBlockchain/subnet-evm/precompile/modules"
-	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
-	"github.com/MetalBlockchain/subnet-evm/utils"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/shubhamdubey02/subnet-evm/precompile/modules"
+	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )

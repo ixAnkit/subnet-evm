@@ -15,7 +15,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/log"
 
-	"github.com/MetalBlockchain/subnet-evm/metrics"
+	"github.com/shubhamdubey02/subnet-evm/metrics"
 )
 
 const (

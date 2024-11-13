@@ -12,7 +12,7 @@ import (
 	"github.com/MetalBlockchain/metalgo/utils/ulimit"
 	"github.com/MetalBlockchain/metalgo/vms/rpcchainvm"
 
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm"
 )
 
 func Run(versionStr string) {

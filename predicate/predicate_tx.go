@@ -6,9 +6,9 @@ package predicate
 import (
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/utils"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 )
 
 // NewPredicateTx returns a transaction with the predicateAddress/predicateBytes tuple

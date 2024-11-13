@@ -9,11 +9,11 @@ import (
 	"github.com/MetalBlockchain/metalgo/utils/set"
 	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp"
 	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp/payload"
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
-	"github.com/MetalBlockchain/subnet-evm/predicate"
-	"github.com/MetalBlockchain/subnet-evm/vmerrs"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/shubhamdubey02/subnet-evm/predicate"
+	"github.com/shubhamdubey02/subnet-evm/vmerrs"
 )
 
 var (

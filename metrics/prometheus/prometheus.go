@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/MetalBlockchain/subnet-evm/metrics"
+	"github.com/shubhamdubey02/subnet-evm/metrics"
 
 	"github.com/prometheus/client_golang/prometheus"
 

@@ -32,7 +32,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 // Tests that batched bloom bits are correctly rotated from the input bloom

@@ -9,7 +9,7 @@ import (
 	"strconv"
 
 	"github.com/MetalBlockchain/metalgo/version"
-	"github.com/MetalBlockchain/subnet-evm/utils"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 )
 
 // NetworkUpgrades contains timestamps that enable network upgrades.

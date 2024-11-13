@@ -12,10 +12,10 @@ import (
 	"github.com/MetalBlockchain/metalgo/ids"
 	"github.com/MetalBlockchain/metalgo/utils/units"
 
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
-	"github.com/MetalBlockchain/subnet-evm/sync/handlers/stats"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
+	"github.com/shubhamdubey02/subnet-evm/sync/handlers/stats"
 )
 
 const (

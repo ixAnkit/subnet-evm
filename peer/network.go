@@ -23,8 +23,8 @@ import (
 	"github.com/MetalBlockchain/metalgo/utils/set"
 	"github.com/MetalBlockchain/metalgo/version"
 
-	"github.com/MetalBlockchain/subnet-evm/peer/stats"
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
+	"github.com/shubhamdubey02/subnet-evm/peer/stats"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
 )
 
 // Minimum amount of time to handle a request

@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/tests/utils"
 	ginkgo "github.com/onsi/ginkgo/v2"
+	"github.com/shubhamdubey02/subnet-evm/tests/utils"
 )
 
 // Registers the Asynchronized Precompile Tests

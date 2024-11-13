@@ -25,8 +25,8 @@ import (
 	"github.com/MetalBlockchain/metalgo/tests/fixture/tmpnet"
 	"github.com/MetalBlockchain/metalgo/utils/set"
 
-	"github.com/MetalBlockchain/subnet-evm/tests"
-	"github.com/MetalBlockchain/subnet-evm/tests/utils"
+	"github.com/shubhamdubey02/subnet-evm/tests"
+	"github.com/shubhamdubey02/subnet-evm/tests/utils"
 )
 
 const (

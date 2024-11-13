@@ -29,12 +29,12 @@ package core
 import (
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/consensus"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/core/vm"
-	"github.com/MetalBlockchain/subnet-evm/predicate"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/consensus"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/core/vm"
+	"github.com/shubhamdubey02/subnet-evm/predicate"
 	//"github.com/ethereum/go-ethereum/log"
 )
 

@@ -27,9 +27,9 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/MetalBlockchain/subnet-evm/core/txpool"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/utils"
+	"github.com/shubhamdubey02/subnet-evm/core/txpool"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 )
 
 func TestEthTxGossip(t *testing.T) {

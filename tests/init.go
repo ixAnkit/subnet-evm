@@ -33,8 +33,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/MetalBlockchain/subnet-evm/params"
-	"github.com/MetalBlockchain/subnet-evm/utils"
+	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 )
 
 // Forks table defines supported forks and their chain config.

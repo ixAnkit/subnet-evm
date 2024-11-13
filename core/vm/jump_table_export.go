@@ -17,7 +17,7 @@
 package vm
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 // LookupInstructionSet returns the instructionset for the fork configured by

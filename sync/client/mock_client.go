@@ -10,11 +10,11 @@ import (
 
 	"github.com/MetalBlockchain/metalgo/codec"
 	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
-	"github.com/MetalBlockchain/subnet-evm/sync/handlers"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
+	"github.com/shubhamdubey02/subnet-evm/sync/handlers"
 )
 
 var (

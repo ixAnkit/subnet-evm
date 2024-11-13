@@ -13,11 +13,11 @@ package {{.Package}}
 import (
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
-	"github.com/MetalBlockchain/subnet-evm/precompile/testutils"
-	"github.com/MetalBlockchain/subnet-evm/utils"
+	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/shubhamdubey02/subnet-evm/precompile/testutils"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 	{{- if .Contract.AllowList}}
-	"github.com/MetalBlockchain/subnet-evm/precompile/allowlist"
+	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
 
 	"github.com/ethereum/go-ethereum/common"
 	{{- end}}

@@ -32,9 +32,9 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 type ValidationInfo struct {

@@ -11,7 +11,7 @@ import (
 	"github.com/MetalBlockchain/metalgo/ids"
 	"github.com/MetalBlockchain/metalgo/tests/fixture/tmpnet"
 
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm"
 )
 
 func NewTmpnetNodes(count int) []*tmpnet.Node {

@@ -1,4 +1,4 @@
-module github.com/MetalBlockchain/subnet-evm
+module github.com/shubhamdubey02/subnet-evm
 
 go 1.21
 

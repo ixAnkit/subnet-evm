@@ -34,11 +34,11 @@ import (
 	"time"
 
 	"github.com/MetalBlockchain/metalgo/utils/constants"
-	"github.com/MetalBlockchain/subnet-evm/commontype"
-	"github.com/MetalBlockchain/subnet-evm/precompile/modules"
-	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
-	"github.com/MetalBlockchain/subnet-evm/utils"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/shubhamdubey02/subnet-evm/precompile/modules"
+	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 )
 
 const maxJSONLen = 64 * 1024 * 1024 // 64MB

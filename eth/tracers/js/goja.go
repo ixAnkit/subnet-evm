@@ -34,12 +34,12 @@ import (
 
 	"github.com/dop251/goja"
 
-	"github.com/MetalBlockchain/subnet-evm/core/vm"
-	"github.com/MetalBlockchain/subnet-evm/eth/tracers"
-	jsassets "github.com/MetalBlockchain/subnet-evm/eth/tracers/js/internal/tracers"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/shubhamdubey02/subnet-evm/core/vm"
+	"github.com/shubhamdubey02/subnet-evm/eth/tracers"
+	jsassets "github.com/shubhamdubey02/subnet-evm/eth/tracers/js/internal/tracers"
 )
 
 var assetTracers = make(map[string]string)

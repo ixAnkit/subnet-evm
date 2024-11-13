@@ -4,9 +4,9 @@
 package syncutils
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/core/state/snapshot"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/shubhamdubey02/subnet-evm/core/state/snapshot"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 var (

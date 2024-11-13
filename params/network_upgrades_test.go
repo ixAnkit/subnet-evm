@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/MetalBlockchain/metalgo/utils/constants"
-	"github.com/MetalBlockchain/subnet-evm/utils"
+	"github.com/shubhamdubey02/subnet-evm/utils"
 	"github.com/stretchr/testify/require"
 )
 

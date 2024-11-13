@@ -8,8 +8,8 @@ import (
 	"net/http"
 
 	"github.com/MetalBlockchain/metalgo/utils/formatting"
-	"github.com/MetalBlockchain/subnet-evm/core"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core"
 )
 
 var (

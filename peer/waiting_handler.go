@@ -6,7 +6,7 @@ package peer
 import (
 	"context"
 
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm/message"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
 )
 
 var _ message.ResponseHandler = &waitingResponseHandler{}

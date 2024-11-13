@@ -7,8 +7,8 @@ import (
 	"fmt"
 
 	"github.com/MetalBlockchain/metalgo/version"
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm"
-	"github.com/MetalBlockchain/subnet-evm/plugin/runner"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm"
+	"github.com/shubhamdubey02/subnet-evm/plugin/runner"
 )
 
 func main() {

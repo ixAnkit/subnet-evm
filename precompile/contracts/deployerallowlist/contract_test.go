@@ -6,8 +6,8 @@ package deployerallowlist
 import (
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/core/state"
-	"github.com/MetalBlockchain/subnet-evm/precompile/allowlist"
+	"github.com/shubhamdubey02/subnet-evm/core/state"
+	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
 )
 
 func TestContractDeployerAllowListRun(t *testing.T) {

@@ -27,11 +27,11 @@
 package vm
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/params"
-	"github.com/MetalBlockchain/subnet-evm/vmerrs"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/holiman/uint256"
+	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/vmerrs"
 )
 
 func opAdd(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext) ([]byte, error) {

@@ -30,10 +30,10 @@ import (
 	"context"
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/core"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/rpc"
 	lru "github.com/hashicorp/golang-lru"
+	"github.com/shubhamdubey02/subnet-evm/core"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/rpc"
 )
 
 // additional slots in the header cache to allow processing queries

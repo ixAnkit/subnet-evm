@@ -29,9 +29,9 @@ package trie
 import (
 	"sync"
 
-	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
 )
 
 const defaultPreimagesLimit = 4 * 1024 * 1024 // 4 MB

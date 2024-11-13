@@ -6,9 +6,9 @@ package allowlist
 import (
 	"fmt"
 
-	"github.com/MetalBlockchain/subnet-evm/precompile/contract"
-	"github.com/MetalBlockchain/subnet-evm/precompile/precompileconfig"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
 )
 
 var ErrCannotAddManagersBeforeDurango = fmt.Errorf("cannot add managers before Durango")

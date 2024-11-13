@@ -19,12 +19,12 @@ import (
 	"github.com/MetalBlockchain/metalgo/ids"
 	"github.com/MetalBlockchain/metalgo/vms/secp256k1fx"
 	wallet "github.com/MetalBlockchain/metalgo/wallet/subnet/primary"
-	"github.com/MetalBlockchain/subnet-evm/core"
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/go-cmd/cmd"
 	"github.com/onsi/ginkgo/v2"
 	"github.com/onsi/gomega"
+	"github.com/shubhamdubey02/subnet-evm/core"
+	"github.com/shubhamdubey02/subnet-evm/plugin/evm"
 )
 
 type SubnetSuite struct {

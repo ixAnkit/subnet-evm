@@ -31,9 +31,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/MetalBlockchain/subnet-evm/core/rawdb"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 const maxConcurrency = 4

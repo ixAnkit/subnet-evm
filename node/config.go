@@ -31,10 +31,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/MetalBlockchain/subnet-evm/accounts"
-	"github.com/MetalBlockchain/subnet-evm/accounts/external"
-	"github.com/MetalBlockchain/subnet-evm/accounts/keystore"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/accounts"
+	"github.com/shubhamdubey02/subnet-evm/accounts/external"
+	"github.com/shubhamdubey02/subnet-evm/accounts/keystore"
 )
 
 // Config represents a small collection of configuration values to fine tune the

@@ -27,8 +27,8 @@
 package runtime
 
 import (
-	"github.com/MetalBlockchain/subnet-evm/core"
-	"github.com/MetalBlockchain/subnet-evm/core/vm"
+	"github.com/shubhamdubey02/subnet-evm/core"
+	"github.com/shubhamdubey02/subnet-evm/core/vm"
 )
 
 func NewEnv(cfg *Config) *vm.EVM {

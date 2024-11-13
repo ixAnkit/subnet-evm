@@ -33,10 +33,10 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/MetalBlockchain/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
-const ourPath = "github.com/MetalBlockchain/subnet-evm" // Path to our module
+const ourPath = "github.com/shubhamdubey02/subnet-evm" // Path to our module
 
 // These variables are set at build-time by the linker when the build is
 // done by build/ci.go.

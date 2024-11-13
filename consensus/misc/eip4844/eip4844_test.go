@@ -21,7 +21,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/MetalBlockchain/subnet-evm/params"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 func TestCalcExcessBlobGas(t *testing.T) {

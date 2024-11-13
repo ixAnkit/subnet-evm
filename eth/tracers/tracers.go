@@ -23,8 +23,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/core/vm"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/vm"
 )
 
 // Context contains some contextual infos for a transaction execution that is not

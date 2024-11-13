@@ -10,8 +10,8 @@ import (
 	"github.com/MetalBlockchain/metalgo/codec"
 	"github.com/MetalBlockchain/metalgo/ids"
 
-	"github.com/MetalBlockchain/subnet-evm/internal/ethapi"
-	"github.com/MetalBlockchain/subnet-evm/rpc"
+	"github.com/shubhamdubey02/subnet-evm/internal/ethapi"
+	"github.com/shubhamdubey02/subnet-evm/rpc"
 
 	"github.com/ethereum/go-ethereum/log"
 )

@@ -32,10 +32,10 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/core/bloombits"
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/rpc"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/shubhamdubey02/subnet-evm/core/bloombits"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/rpc"
 )
 
 // Filter can be used to retrieve and filter logs.

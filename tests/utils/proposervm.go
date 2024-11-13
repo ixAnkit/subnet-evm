@@ -8,12 +8,12 @@ import (
 	"crypto/ecdsa"
 	"math/big"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
-	"github.com/MetalBlockchain/subnet-evm/ethclient"
-	"github.com/MetalBlockchain/subnet-evm/params"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/ethclient"
+	"github.com/shubhamdubey02/subnet-evm/params"
 )
 
 const numTriggerTxs = 2 // Number of txs needed to activate the proposer VM fork

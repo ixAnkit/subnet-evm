@@ -29,7 +29,7 @@ package core
 import (
 	"sync"
 
-	"github.com/MetalBlockchain/subnet-evm/core/types"
+	"github.com/shubhamdubey02/subnet-evm/core/types"
 )
 
 // txSenderCacherRequest is a request for recovering transaction senders with a
