@@ -20,10 +20,10 @@ import (
 	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
 	"github.com/shubhamdubey02/subnet-evm/predicate"
 
-	"github.com/cryft-labs/cryftgo/ids"
-	"github.com/cryft-labs/cryftgo/snow/choices"
-	"github.com/cryft-labs/cryftgo/snow/consensus/snowman"
-	"github.com/cryft-labs/cryftgo/snow/engine/snowman/block"
+	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/MetalBlockchain/metalgo/snow/choices"
+	"github.com/MetalBlockchain/metalgo/snow/consensus/snowman"
+	"github.com/MetalBlockchain/metalgo/snow/engine/snowman/block"
 )
 
 var (

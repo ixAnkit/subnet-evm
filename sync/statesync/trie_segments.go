@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/cryft-labs/cryftgo/utils/wrappers"
+	"github.com/MetalBlockchain/metalgo/utils/wrappers"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/log"

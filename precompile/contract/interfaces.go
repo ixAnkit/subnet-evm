@@ -7,7 +7,7 @@ package contract
 import (
 	"math/big"
 
-	"github.com/cryft-labs/cryftgo/snow"
+	"github.com/MetalBlockchain/metalgo/snow"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
 )

@@ -13,7 +13,7 @@ import (
 	big "math/big"
 	reflect "reflect"
 
-	snow "github.com/cryft-labs/cryftgo/snow"
+	snow "github.com/MetalBlockchain/metalgo/snow"
 	precompileconfig "github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
 	common "github.com/ethereum/go-ethereum/common"
 	gomock "go.uber.org/mock/gomock"

@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/cryft-labs/cryftgo/api"
-	"github.com/cryft-labs/cryftgo/utils/rpc"
+	"github.com/MetalBlockchain/metalgo/api"
+	"github.com/MetalBlockchain/metalgo/utils/rpc"
 	"github.com/ethereum/go-ethereum/log"
 )
 

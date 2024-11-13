@@ -4,12 +4,12 @@
 package utils
 
 import (
-	"github.com/cryft-labs/cryftgo/api/metrics"
-	"github.com/cryft-labs/cryftgo/ids"
-	"github.com/cryft-labs/cryftgo/snow"
-	"github.com/cryft-labs/cryftgo/snow/validators"
-	"github.com/cryft-labs/cryftgo/utils/crypto/bls"
-	"github.com/cryft-labs/cryftgo/utils/logging"
+	"github.com/MetalBlockchain/metalgo/api/metrics"
+	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/MetalBlockchain/metalgo/snow"
+	"github.com/MetalBlockchain/metalgo/snow/validators"
+	"github.com/MetalBlockchain/metalgo/utils/crypto/bls"
+	"github.com/MetalBlockchain/metalgo/utils/logging"
 )
 
 func TestSnowContext() *snow.Context {

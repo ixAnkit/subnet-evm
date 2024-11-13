@@ -8,7 +8,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/cryft-labs/cryftgo/utils/formatting"
+	"github.com/MetalBlockchain/metalgo/utils/formatting"
 	"github.com/shubhamdubey02/subnet-evm/core"
 	"github.com/shubhamdubey02/subnet-evm/params"
 	"github.com/stretchr/testify/assert"

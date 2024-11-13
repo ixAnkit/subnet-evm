@@ -28,7 +28,7 @@
 package miner
 
 import (
-	"github.com/cryft-labs/cryftgo/utils/timer/mockable"
+	"github.com/MetalBlockchain/metalgo/utils/timer/mockable"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/event"
 	"github.com/shubhamdubey02/subnet-evm/consensus"

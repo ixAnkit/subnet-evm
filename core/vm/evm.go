@@ -31,7 +31,7 @@ import (
 	"math/big"
 	"sync/atomic"
 
-	"github.com/cryft-labs/cryftgo/snow"
+	"github.com/MetalBlockchain/metalgo/snow"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/holiman/uint256"

@@ -7,7 +7,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/cryft-labs/cryftgo/utils/set"
+	"github.com/MetalBlockchain/metalgo/utils/set"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/shubhamdubey02/subnet-evm/core/types"

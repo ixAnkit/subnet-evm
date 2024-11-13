@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cryft-labs/cryftgo/api/health"
+	"github.com/MetalBlockchain/metalgo/api/health"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/go-cmd/cmd"
 	"github.com/onsi/ginkgo/v2"

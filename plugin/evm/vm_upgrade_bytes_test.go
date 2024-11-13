@@ -12,9 +12,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cryft-labs/cryftgo/snow"
-	commonEng "github.com/cryft-labs/cryftgo/snow/engine/common"
-	"github.com/cryft-labs/cryftgo/vms/components/chain"
+	"github.com/MetalBlockchain/metalgo/snow"
+	commonEng "github.com/MetalBlockchain/metalgo/snow/engine/common"
+	"github.com/MetalBlockchain/metalgo/vms/components/chain"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"

@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/cryft-labs/cryftgo/database"
-	"github.com/cryft-labs/cryftgo/snow/engine/snowman/block"
+	"github.com/MetalBlockchain/metalgo/database"
+	"github.com/MetalBlockchain/metalgo/snow/engine/snowman/block"
 
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/shubhamdubey02/subnet-evm/core"

@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/cryft-labs/cryftgo/snow"
+	"github.com/MetalBlockchain/metalgo/snow"
 )
 
 // UpgradeConfig includes the following configs that may be specified in upgradeBytes:

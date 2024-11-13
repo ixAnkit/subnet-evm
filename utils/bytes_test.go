@@ -7,7 +7,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/cryft-labs/cryftgo/utils"
+	"github.com/MetalBlockchain/metalgo/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strconv"
 
-	"github.com/cryft-labs/cryftgo/version"
+	"github.com/MetalBlockchain/metalgo/version"
 	"github.com/shubhamdubey02/subnet-evm/utils"
 )
 

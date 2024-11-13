@@ -6,7 +6,7 @@ package params
 import (
 	"testing"
 
-	"github.com/cryft-labs/cryftgo/utils/constants"
+	"github.com/MetalBlockchain/metalgo/utils/constants"
 	"github.com/shubhamdubey02/subnet-evm/utils"
 	"github.com/stretchr/testify/require"
 )

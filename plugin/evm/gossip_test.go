@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cryft-labs/cryftgo/network/p2p/gossip"
+	"github.com/MetalBlockchain/metalgo/network/p2p/gossip"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/prometheus/client_golang/prometheus"

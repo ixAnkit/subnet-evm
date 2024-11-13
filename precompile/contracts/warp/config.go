@@ -8,8 +8,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/cryft-labs/cryftgo/vms/platformvm/warp"
-	"github.com/cryft-labs/cryftgo/vms/platformvm/warp/payload"
+	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp"
+	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp/payload"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/log"

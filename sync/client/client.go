@@ -11,13 +11,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/MetalBlockchain/metalgo/ids"
 
 	"github.com/shubhamdubey02/subnet-evm/params"
 	"github.com/shubhamdubey02/subnet-evm/sync/client/stats"
 
-	"github.com/cryft-labs/cryftgo/codec"
-	"github.com/cryft-labs/cryftgo/version"
+	"github.com/MetalBlockchain/metalgo/codec"
+	"github.com/MetalBlockchain/metalgo/version"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"

@@ -7,8 +7,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/cryft-labs/cryftgo/snow/engine/snowman/block"
-	"github.com/cryft-labs/cryftgo/utils/set"
+	"github.com/MetalBlockchain/metalgo/snow/engine/snowman/block"
+	"github.com/MetalBlockchain/metalgo/utils/set"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/shubhamdubey02/subnet-evm/core/types"
 	"github.com/shubhamdubey02/subnet-evm/params"

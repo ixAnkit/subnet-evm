@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/MetalBlockchain/metalgo/ids"
 )
 
 var _ CrossChainRequest = EthCallRequest{}

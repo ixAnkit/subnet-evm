@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/MetalBlockchain/metalgo/ids"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/shubhamdubey02/subnet-evm/rpc"
 )

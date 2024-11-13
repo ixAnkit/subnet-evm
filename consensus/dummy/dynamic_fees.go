@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/cryft-labs/cryftgo/utils/wrappers"
+	"github.com/MetalBlockchain/metalgo/utils/wrappers"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/shubhamdubey02/subnet-evm/commontype"
