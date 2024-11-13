@@ -7,8 +7,8 @@ import (
 	"encoding/base64"
 	"testing"
 
-	"github.com/MetalBlockchain/metalgo/utils"
-	"github.com/MetalBlockchain/metalgo/utils/units"
+	"github.com/cryft-labs/cryftgo/utils"
+	"github.com/cryft-labs/cryftgo/utils/units"
 
 	"github.com/stretchr/testify/assert"
 )

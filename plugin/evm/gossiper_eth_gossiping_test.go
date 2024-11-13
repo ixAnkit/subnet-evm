@@ -14,10 +14,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/utils/set"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgo/utils/set"
 
-	commonEng "github.com/MetalBlockchain/metalgo/snow/engine/common"
+	commonEng "github.com/cryft-labs/cryftgo/snow/engine/common"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"

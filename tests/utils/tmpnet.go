@@ -7,9 +7,9 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/MetalBlockchain/metalgo/config"
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/tests/fixture/tmpnet"
+	"github.com/cryft-labs/cryftgo/config"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgo/tests/fixture/tmpnet"
 
 	"github.com/shubhamdubey02/subnet-evm/plugin/evm"
 )

@@ -7,9 +7,9 @@ import (
 	"context"
 	"errors"
 
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/ids"
 
-	"github.com/MetalBlockchain/metalgo/version"
+	"github.com/cryft-labs/cryftgo/version"
 )
 
 var (

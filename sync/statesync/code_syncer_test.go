@@ -8,7 +8,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/MetalBlockchain/metalgo/utils"
+	"github.com/cryft-labs/cryftgo/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethdb/memorydb"

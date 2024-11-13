@@ -7,11 +7,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/ids"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/MetalBlockchain/metalgo/snow/engine/snowman/block"
+	"github.com/cryft-labs/cryftgo/snow/engine/snowman/block"
 )
 
 var _ block.StateSummary = &SyncSummary{}

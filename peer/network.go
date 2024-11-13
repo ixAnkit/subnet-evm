@@ -14,14 +14,14 @@ import (
 
 	"github.com/ethereum/go-ethereum/log"
 
-	"github.com/MetalBlockchain/metalgo/codec"
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/network/p2p"
-	"github.com/MetalBlockchain/metalgo/snow/engine/common"
-	"github.com/MetalBlockchain/metalgo/snow/validators"
-	"github.com/MetalBlockchain/metalgo/utils"
-	"github.com/MetalBlockchain/metalgo/utils/set"
-	"github.com/MetalBlockchain/metalgo/version"
+	"github.com/cryft-labs/cryftgo/codec"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgo/network/p2p"
+	"github.com/cryft-labs/cryftgo/snow/engine/common"
+	"github.com/cryft-labs/cryftgo/snow/validators"
+	"github.com/cryft-labs/cryftgo/utils"
+	"github.com/cryft-labs/cryftgo/utils/set"
+	"github.com/cryft-labs/cryftgo/version"
 
 	"github.com/shubhamdubey02/subnet-evm/peer/stats"
 	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"

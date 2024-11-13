@@ -32,7 +32,7 @@ import (
 	"math/big"
 	"sync"
 
-	"github.com/MetalBlockchain/metalgo/utils/timer/mockable"
+	"github.com/cryft-labs/cryftgo/utils/timer/mockable"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/lru"
 	"github.com/ethereum/go-ethereum/common/math"

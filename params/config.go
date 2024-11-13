@@ -33,7 +33,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/MetalBlockchain/metalgo/utils/constants"
+	"github.com/cryft-labs/cryftgo/utils/constants"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/shubhamdubey02/subnet-evm/commontype"
 	"github.com/shubhamdubey02/subnet-evm/precompile/modules"
@@ -224,11 +224,11 @@ func (c *ChainConfig) Description() string {
 	}
 
 	banner += "Hard forks (timestamp based):\n"
-	banner += fmt.Sprintf(" - Cancun Timestamp:              @%-10v (https://github.com/MetalBlockchain/metalgo/releases/tag/v1.12.0)\n", ptrToString(c.CancunTime))
+	banner += fmt.Sprintf(" - Cancun Timestamp:              @%-10v (https://github.com/cryft-labs/cryftgo/releases/tag/v1.12.0)\n", ptrToString(c.CancunTime))
 
 	banner += "Avalanche Upgrades (timestamp based):\n"
-	banner += fmt.Sprintf(" - SubnetEVM Timestamp:           @%-10v (https://github.com/MetalBlockchain/metalgo/releases/tag/v1.10.0)\n", ptrToString(c.SubnetEVMTimestamp))
-	banner += fmt.Sprintf(" - Durango Timestamp:            @%-10v (https://github.com/MetalBlockchain/metalgo/releases/tag/v1.11.0)\n", ptrToString(c.DurangoTimestamp))
+	banner += fmt.Sprintf(" - SubnetEVM Timestamp:           @%-10v (https://github.com/cryft-labs/cryftgo/releases/tag/v1.10.0)\n", ptrToString(c.SubnetEVMTimestamp))
+	banner += fmt.Sprintf(" - Durango Timestamp:            @%-10v (https://github.com/cryft-labs/cryftgo/releases/tag/v1.11.0)\n", ptrToString(c.DurangoTimestamp))
 	banner += "\n"
 
 	precompileUpgradeBytes, err := json.Marshal(c.GenesisPrecompiles)

@@ -19,11 +19,11 @@ import (
 
 	"github.com/ethereum/go-ethereum/log"
 
-	"github.com/MetalBlockchain/metalgo/config"
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/tests/fixture/e2e"
-	"github.com/MetalBlockchain/metalgo/tests/fixture/tmpnet"
-	"github.com/MetalBlockchain/metalgo/utils/set"
+	"github.com/cryft-labs/cryftgo/config"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgo/tests/fixture/e2e"
+	"github.com/cryft-labs/cryftgo/tests/fixture/tmpnet"
+	"github.com/cryft-labs/cryftgo/utils/set"
 
 	"github.com/shubhamdubey02/subnet-evm/tests"
 	"github.com/shubhamdubey02/subnet-evm/tests/utils"

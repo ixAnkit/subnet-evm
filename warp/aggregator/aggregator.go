@@ -9,9 +9,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/log"
 
-	"github.com/MetalBlockchain/metalgo/utils/crypto/bls"
-	"github.com/MetalBlockchain/metalgo/utils/set"
-	avalancheWarp "github.com/MetalBlockchain/metalgo/vms/platformvm/warp"
+	"github.com/cryft-labs/cryftgo/utils/crypto/bls"
+	"github.com/cryft-labs/cryftgo/utils/set"
+	avalancheWarp "github.com/cryft-labs/cryftgo/vms/platformvm/warp"
 	"github.com/shubhamdubey02/subnet-evm/precompile/contracts/warp"
 )
 

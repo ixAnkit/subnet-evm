@@ -7,8 +7,8 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/MetalBlockchain/metalgo/codec"
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/codec"
+	"github.com/cryft-labs/cryftgo/ids"
 
 	"github.com/shubhamdubey02/subnet-evm/internal/ethapi"
 	"github.com/shubhamdubey02/subnet-evm/rpc"

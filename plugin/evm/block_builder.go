@@ -7,13 +7,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/MetalBlockchain/metalgo/utils/timer"
+	"github.com/cryft-labs/cryftgo/utils/timer"
 	"github.com/shubhamdubey02/subnet-evm/core"
 	"github.com/shubhamdubey02/subnet-evm/core/txpool"
 	"github.com/shubhamdubey02/subnet-evm/params"
 
-	"github.com/MetalBlockchain/metalgo/snow"
-	commonEng "github.com/MetalBlockchain/metalgo/snow/engine/common"
+	"github.com/cryft-labs/cryftgo/snow"
+	commonEng "github.com/cryft-labs/cryftgo/snow/engine/common"
 	"github.com/ethereum/go-ethereum/log"
 )
 

@@ -16,9 +16,9 @@ import (
 	"sync"
 	"time"
 
-	avalanchegoMetrics "github.com/MetalBlockchain/metalgo/api/metrics"
-	"github.com/MetalBlockchain/metalgo/network/p2p"
-	"github.com/MetalBlockchain/metalgo/network/p2p/gossip"
+	avalanchegoMetrics "github.com/cryft-labs/cryftgo/api/metrics"
+	"github.com/cryft-labs/cryftgo/network/p2p"
+	"github.com/cryft-labs/cryftgo/network/p2p/gossip"
 	"github.com/prometheus/client_golang/prometheus"
 
 	"github.com/shubhamdubey02/subnet-evm/commontype"
@@ -63,25 +63,25 @@ import (
 
 	avalancheRPC "github.com/gorilla/rpc/v2"
 
-	"github.com/MetalBlockchain/metalgo/codec"
-	"github.com/MetalBlockchain/metalgo/database"
-	"github.com/MetalBlockchain/metalgo/database/prefixdb"
-	"github.com/MetalBlockchain/metalgo/database/versiondb"
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/snow"
-	"github.com/MetalBlockchain/metalgo/snow/choices"
-	"github.com/MetalBlockchain/metalgo/snow/consensus/snowman"
-	"github.com/MetalBlockchain/metalgo/snow/engine/snowman/block"
-	"github.com/MetalBlockchain/metalgo/utils/perms"
-	"github.com/MetalBlockchain/metalgo/utils/profiler"
-	"github.com/MetalBlockchain/metalgo/utils/timer/mockable"
-	"github.com/MetalBlockchain/metalgo/utils/units"
-	"github.com/MetalBlockchain/metalgo/vms/components/chain"
+	"github.com/cryft-labs/cryftgo/codec"
+	"github.com/cryft-labs/cryftgo/database"
+	"github.com/cryft-labs/cryftgo/database/prefixdb"
+	"github.com/cryft-labs/cryftgo/database/versiondb"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgo/snow"
+	"github.com/cryft-labs/cryftgo/snow/choices"
+	"github.com/cryft-labs/cryftgo/snow/consensus/snowman"
+	"github.com/cryft-labs/cryftgo/snow/engine/snowman/block"
+	"github.com/cryft-labs/cryftgo/utils/perms"
+	"github.com/cryft-labs/cryftgo/utils/profiler"
+	"github.com/cryft-labs/cryftgo/utils/timer/mockable"
+	"github.com/cryft-labs/cryftgo/utils/units"
+	"github.com/cryft-labs/cryftgo/vms/components/chain"
 
-	commonEng "github.com/MetalBlockchain/metalgo/snow/engine/common"
+	commonEng "github.com/cryft-labs/cryftgo/snow/engine/common"
 
-	avalancheUtils "github.com/MetalBlockchain/metalgo/utils"
-	avalancheJSON "github.com/MetalBlockchain/metalgo/utils/json"
+	avalancheUtils "github.com/cryft-labs/cryftgo/utils"
+	avalancheJSON "github.com/cryft-labs/cryftgo/utils/json"
 )
 
 var (

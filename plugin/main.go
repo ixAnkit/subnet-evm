@@ -6,7 +6,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/MetalBlockchain/metalgo/version"
+	"github.com/cryft-labs/cryftgo/version"
 	"github.com/shubhamdubey02/subnet-evm/plugin/evm"
 	"github.com/shubhamdubey02/subnet-evm/plugin/runner"
 )

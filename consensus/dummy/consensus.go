@@ -10,7 +10,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/MetalBlockchain/metalgo/utils/timer/mockable"
+	"github.com/cryft-labs/cryftgo/utils/timer/mockable"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/shubhamdubey02/subnet-evm/consensus"
 	"github.com/shubhamdubey02/subnet-evm/consensus/misc/eip4844"
