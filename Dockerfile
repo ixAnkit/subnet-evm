@@ -26,7 +26,7 @@ ARG CURRENT_BRANCH
 RUN export SUBNET_EVM_COMMIT=$SUBNET_EVM_COMMIT && export CURRENT_BRANCH=$CURRENT_BRANCH && ./scripts/build.sh /build/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy
 
 # ============= Cleanup Stage ================
-FROM metalblockchain/metalgo:$METAL_VERSION AS builtImage
+FROM cryft-labs/cryftgo:$METAL_VERSION AS builtImage
 
 # Copy the evm binary into the correct location in the container
 COPY --from=builder /build/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy /metalgo/build/plugins/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy

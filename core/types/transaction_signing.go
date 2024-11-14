@@ -34,7 +34,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/params"
 )
 
 var ErrInvalidChainId = errors.New("invalid chain id for signer")

@@ -47,9 +47,9 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
 	pcsc "github.com/gballet/go-libpcsclite"
-	"github.com/shubhamdubey02/subnet-evm/accounts"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/interfaces"
+	"github.com/ixAnkit/subnet-evm/accounts"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/interfaces"
 	"github.com/status-im/keycard-go/derivationpath"
 )
 

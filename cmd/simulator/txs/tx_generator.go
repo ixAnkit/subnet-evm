@@ -9,8 +9,8 @@ import (
 	"fmt"
 
 	ethcrypto "github.com/ethereum/go-ethereum/crypto"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/ethclient"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/ethclient"
 )
 
 var _ TxSequence[*types.Transaction] = (*txSequence)(nil)

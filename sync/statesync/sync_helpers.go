@@ -6,9 +6,9 @@ package statesync
 import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/trie"
+	"github.com/ixAnkit/subnet-evm/core/rawdb"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/trie"
 )
 
 // writeAccountSnapshot stores the account represented by [acc] to the snapshot at [accHash], using

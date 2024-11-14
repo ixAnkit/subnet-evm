@@ -40,7 +40,7 @@ import (
 	"unicode"
 
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
+	"github.com/ixAnkit/subnet-evm/accounts/abi"
 )
 
 // BindHook is a callback function that can be used to customize the binding.

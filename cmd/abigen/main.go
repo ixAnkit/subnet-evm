@@ -37,9 +37,9 @@ import (
 	"github.com/ethereum/go-ethereum/common/compiler"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/shubhamdubey02/subnet-evm/accounts/abi/bind"
-	"github.com/shubhamdubey02/subnet-evm/cmd/utils"
-	"github.com/shubhamdubey02/subnet-evm/internal/flags"
+	"github.com/ixAnkit/subnet-evm/accounts/abi/bind"
+	"github.com/ixAnkit/subnet-evm/cmd/utils"
+	"github.com/ixAnkit/subnet-evm/internal/flags"
 	"github.com/urfave/cli/v2"
 )
 

@@ -6,8 +6,8 @@ package params
 import (
 	"encoding/json"
 
-	"github.com/shubhamdubey02/subnet-evm/precompile/modules"
-	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/ixAnkit/subnet-evm/precompile/modules"
+	"github.com/ixAnkit/subnet-evm/precompile/precompileconfig"
 )
 
 type Precompiles map[string]precompileconfig.Config

@@ -39,12 +39,12 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
-	"github.com/shubhamdubey02/subnet-evm/accounts/abi/bind"
-	"github.com/shubhamdubey02/subnet-evm/core"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/interfaces"
-	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/accounts/abi"
+	"github.com/ixAnkit/subnet-evm/accounts/abi/bind"
+	"github.com/ixAnkit/subnet-evm/core"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/interfaces"
+	"github.com/ixAnkit/subnet-evm/params"
 )
 
 func TestSimulatedBackend(t *testing.T) {

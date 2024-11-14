@@ -22,7 +22,7 @@ import (
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/rpc"
+	"github.com/ixAnkit/subnet-evm/rpc"
 )
 
 func TestUnmarshalJSONNewFilterArgs(t *testing.T) {

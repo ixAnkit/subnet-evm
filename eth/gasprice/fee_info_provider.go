@@ -31,9 +31,9 @@ import (
 	"math/big"
 
 	lru "github.com/hashicorp/golang-lru"
-	"github.com/shubhamdubey02/subnet-evm/core"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/rpc"
+	"github.com/ixAnkit/subnet-evm/core"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/rpc"
 )
 
 // additional slots in the header cache to allow processing queries

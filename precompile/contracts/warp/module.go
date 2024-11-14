@@ -6,9 +6,9 @@ package warp
 import (
 	"fmt"
 
-	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
-	"github.com/shubhamdubey02/subnet-evm/precompile/modules"
-	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/ixAnkit/subnet-evm/precompile/contract"
+	"github.com/ixAnkit/subnet-evm/precompile/modules"
+	"github.com/ixAnkit/subnet-evm/precompile/precompileconfig"
 
 	"github.com/ethereum/go-ethereum/common"
 )

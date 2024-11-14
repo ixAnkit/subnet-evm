@@ -8,12 +8,12 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/MetalBlockchain/metalgo/utils/wrappers"
+	"github.com/cryft-labs/cryftgo/utils/wrappers"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/shubhamdubey02/subnet-evm/commontype"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/commontype"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/params"
 )
 
 // CalcBaseFee takes the previous header and the timestamp of its child block

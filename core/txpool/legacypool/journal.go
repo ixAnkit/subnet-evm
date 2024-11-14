@@ -35,7 +35,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core/types"
 )
 
 // errNoActiveJournal is returned if a transaction is attempted to be inserted

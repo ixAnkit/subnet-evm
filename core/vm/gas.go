@@ -28,7 +28,7 @@ package vm
 
 import (
 	"github.com/holiman/uint256"
-	"github.com/shubhamdubey02/subnet-evm/vmerrs"
+	"github.com/ixAnkit/subnet-evm/vmerrs"
 )
 
 // Gas costs

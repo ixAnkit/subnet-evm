@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
-	"github.com/shubhamdubey02/subnet-evm/vmerrs"
+	"github.com/ixAnkit/subnet-evm/accounts/abi"
+	"github.com/ixAnkit/subnet-evm/vmerrs"
 )
 
 // Gas costs for stateful precompiles

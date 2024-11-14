@@ -27,9 +27,9 @@
 package core
 
 import (
-	"github.com/shubhamdubey02/subnet-evm/core/state"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/core/vm"
+	"github.com/ixAnkit/subnet-evm/core/state"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core/vm"
 )
 
 // Validator is an interface which defines the standard for block validation. It

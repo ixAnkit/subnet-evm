@@ -36,8 +36,8 @@ import (
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/shubhamdubey02/subnet-evm/internal/blocktest"
-	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/internal/blocktest"
+	"github.com/ixAnkit/subnet-evm/params"
 )
 
 func TestBlockEncoding(t *testing.T) {

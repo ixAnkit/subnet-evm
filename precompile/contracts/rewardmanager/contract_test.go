@@ -10,14 +10,14 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/shubhamdubey02/subnet-evm/commontype"
-	"github.com/shubhamdubey02/subnet-evm/constants"
-	"github.com/shubhamdubey02/subnet-evm/core/state"
-	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
-	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
-	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
-	"github.com/shubhamdubey02/subnet-evm/precompile/testutils"
-	"github.com/shubhamdubey02/subnet-evm/vmerrs"
+	"github.com/ixAnkit/subnet-evm/commontype"
+	"github.com/ixAnkit/subnet-evm/constants"
+	"github.com/ixAnkit/subnet-evm/core/state"
+	"github.com/ixAnkit/subnet-evm/precompile/allowlist"
+	"github.com/ixAnkit/subnet-evm/precompile/contract"
+	"github.com/ixAnkit/subnet-evm/precompile/precompileconfig"
+	"github.com/ixAnkit/subnet-evm/precompile/testutils"
+	"github.com/ixAnkit/subnet-evm/vmerrs"
 )
 
 var (

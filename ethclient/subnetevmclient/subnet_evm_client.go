@@ -35,10 +35,10 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/ethclient"
-	"github.com/shubhamdubey02/subnet-evm/interfaces"
-	"github.com/shubhamdubey02/subnet-evm/rpc"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/ethclient"
+	"github.com/ixAnkit/subnet-evm/interfaces"
+	"github.com/ixAnkit/subnet-evm/rpc"
 )
 
 // Client is a wrapper around rpc.Client that implements geth-specific functionality.

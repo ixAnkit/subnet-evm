@@ -30,8 +30,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/shubhamdubey02/subnet-evm/core/vm"
-	"github.com/shubhamdubey02/subnet-evm/tests"
+	"github.com/ixAnkit/subnet-evm/core/vm"
+	"github.com/ixAnkit/subnet-evm/tests"
 	"github.com/urfave/cli/v2"
 )
 

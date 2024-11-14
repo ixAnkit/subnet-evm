@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/utils/crypto/bls"
-	avalancheWarp "github.com/MetalBlockchain/metalgo/vms/platformvm/warp"
-	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp/payload"
-	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgos/crypto/bls"
+	avalancheWarp "github.com/cryft-labs/cryftgoplatformvm/warp"
+	"github.com/cryft-labs/cryftgoplatformvm/warp/payload"
+	"github.com/ixAnkit/subnet-evm/plugin/evm/message"
 )
 
 const (

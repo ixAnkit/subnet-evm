@@ -11,24 +11,24 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/ids"
 
-	"github.com/shubhamdubey02/subnet-evm/params"
-	"github.com/shubhamdubey02/subnet-evm/sync/client/stats"
+	"github.com/ixAnkit/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/sync/client/stats"
 
-	"github.com/MetalBlockchain/metalgo/codec"
-	"github.com/MetalBlockchain/metalgo/version"
+	"github.com/cryft-labs/cryftgoc"
+	"github.com/cryft-labs/cryftgoion"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
 
 	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/peer"
-	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
-	"github.com/shubhamdubey02/subnet-evm/trie"
+	"github.com/ixAnkit/subnet-evm/core/rawdb"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/peer"
+	"github.com/ixAnkit/subnet-evm/plugin/evm/message"
+	"github.com/ixAnkit/subnet-evm/trie"
 )
 
 const (

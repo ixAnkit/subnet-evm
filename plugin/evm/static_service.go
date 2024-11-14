@@ -7,9 +7,9 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/MetalBlockchain/metalgo/utils/formatting"
+	"github.com/cryft-labs/cryftgo/utils/formatting"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/core"
+	"github.com/ixAnkit/subnet-evm/core"
 )
 
 var (

@@ -10,9 +10,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/ethclient"
-	"github.com/shubhamdubey02/subnet-evm/interfaces"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/ethclient"
+	"github.com/ixAnkit/subnet-evm/interfaces"
 )
 
 type ethereumTxWorker struct {

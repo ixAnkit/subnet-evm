@@ -6,7 +6,7 @@ package handlers
 import (
 	"time"
 
-	"github.com/shubhamdubey02/subnet-evm/metrics"
+	"github.com/ixAnkit/subnet-evm/metrics"
 )
 
 type handlerStats struct {

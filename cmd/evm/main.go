@@ -32,8 +32,8 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/shubhamdubey02/subnet-evm/cmd/evm/internal/t8ntool"
-	"github.com/shubhamdubey02/subnet-evm/internal/flags"
+	"github.com/ixAnkit/subnet-evm/cmd/evm/internal/t8ntool"
+	"github.com/ixAnkit/subnet-evm/internal/flags"
 	"github.com/urfave/cli/v2"
 )
 

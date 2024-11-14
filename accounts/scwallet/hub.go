@@ -55,7 +55,7 @@ import (
 	"github.com/ethereum/go-ethereum/event"
 	"github.com/ethereum/go-ethereum/log"
 	pcsc "github.com/gballet/go-libpcsclite"
-	"github.com/shubhamdubey02/subnet-evm/accounts"
+	"github.com/ixAnkit/subnet-evm/accounts"
 )
 
 // Scheme is the URI prefix for smartcard wallets.

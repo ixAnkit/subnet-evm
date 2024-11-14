@@ -8,13 +8,13 @@ import (
 	"fmt"
 	"sync/atomic"
 
-	"github.com/MetalBlockchain/metalgo/codec"
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/codec"
+	"github.com/cryft-labs/cryftgo
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
-	"github.com/shubhamdubey02/subnet-evm/sync/handlers"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/plugin/evm/message"
+	"github.com/ixAnkit/subnet-evm/sync/handlers"
 )
 
 var (

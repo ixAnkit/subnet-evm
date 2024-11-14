@@ -7,7 +7,7 @@ import (
 	"bytes"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/ixAnkit/subnet-evm/precompile/contract"
 )
 
 type Module struct {

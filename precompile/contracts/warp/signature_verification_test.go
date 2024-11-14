@@ -8,16 +8,16 @@ import (
 	"math"
 	"testing"
 
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/snow/validators"
-	"github.com/MetalBlockchain/metalgo/utils/crypto/bls"
-	"github.com/MetalBlockchain/metalgo/utils/set"
-	avalancheWarp "github.com/MetalBlockchain/metalgo/vms/platformvm/warp"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgo/validators"
+	"github.com/cryft-labs/cryftgos/crypto/bls"
+	"github.com/cryft-labs/cryftgos/set"
+	avalancheWarp "github.com/cryft-labs/cryftgoplatformvm/warp"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )
 
-// This test copies the test coverage from https://github.com/MetalBlockchain/metalgo/blob/v1.10.0/vms/platformvm/warp/signature_test.go#L137.
+// This test copies the test coverage from https://github.com/cryft-labs/cryftgo/v1.10.0/vms/platformvm/warp/signature_test.go#L137.
 // These tests are only expected to fail if there is a breaking change in AvalancheGo that unexpectedly changes behavior.
 func TestSignatureVerification(t *testing.T) {
 	tests = []signatureTest{

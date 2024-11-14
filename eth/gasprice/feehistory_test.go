@@ -32,13 +32,13 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/shubhamdubey02/subnet-evm/core"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core"
+	"github.com/ixAnkit/subnet-evm/core/types"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/params"
-	"github.com/shubhamdubey02/subnet-evm/rpc"
+	"github.com/ixAnkit/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/rpc"
 )
 
 func TestFeeHistory(t *testing.T) {

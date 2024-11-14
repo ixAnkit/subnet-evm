@@ -34,17 +34,17 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/ids"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/shubhamdubey02/subnet-evm/accounts/abi/bind"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/interfaces"
-	"github.com/shubhamdubey02/subnet-evm/params"
-	"github.com/shubhamdubey02/subnet-evm/rpc"
+	"github.com/ixAnkit/subnet-evm/accounts/abi/bind"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/interfaces"
+	"github.com/ixAnkit/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/rpc"
 
 	// Force-load precompiles to trigger registration
-	_ "github.com/shubhamdubey02/subnet-evm/precompile/registry"
+	_ "github.com/ixAnkit/subnet-evm/precompile/registry"
 )
 
 // Verify that Client implements required interfaces

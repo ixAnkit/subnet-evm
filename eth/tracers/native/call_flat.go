@@ -35,9 +35,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/shubhamdubey02/subnet-evm/core/vm"
-	"github.com/shubhamdubey02/subnet-evm/eth/tracers"
-	"github.com/shubhamdubey02/subnet-evm/vmerrs"
+	"github.com/ixAnkit/subnet-evm/core/vm"
+	"github.com/ixAnkit/subnet-evm/eth/tracers"
+	"github.com/ixAnkit/subnet-evm/vmerrs"
 )
 
 //go:generate go run github.com/fjl/gencodec -type flatCallAction -field-override flatCallActionMarshaling -out gen_flatcallaction_json.go

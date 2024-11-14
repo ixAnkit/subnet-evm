@@ -4,14 +4,14 @@
 package evm
 
 import (
-	"github.com/MetalBlockchain/metalgo/ids"
+	"github.com/cryft-labs/cryftgo/ids"
 
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/rlp"
 
-	"github.com/shubhamdubey02/subnet-evm/core/txpool"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
+	"github.com/ixAnkit/subnet-evm/core/txpool"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/plugin/evm/message"
 )
 
 // GossipHandler handles incoming gossip messages

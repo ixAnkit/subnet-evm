@@ -11,12 +11,12 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/shubhamdubey02/subnet-evm/cmd/simulator/key"
-	"github.com/shubhamdubey02/subnet-evm/cmd/simulator/metrics"
-	"github.com/shubhamdubey02/subnet-evm/cmd/simulator/txs"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/ethclient"
-	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/cmd/simulator/key"
+	"github.com/ixAnkit/subnet-evm/cmd/simulator/metrics"
+	"github.com/ixAnkit/subnet-evm/cmd/simulator/txs"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/ethclient"
+	"github.com/ixAnkit/subnet-evm/params"
 )
 
 // DistributeFunds ensures that each address in keys has at least [minFundsPerAddr] by sending funds

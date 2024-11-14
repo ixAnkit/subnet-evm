@@ -13,18 +13,18 @@ import (
 	"sync"
 	"time"
 
-	"github.com/MetalBlockchain/metalgo/api/health"
-	"github.com/MetalBlockchain/metalgo/api/info"
-	"github.com/MetalBlockchain/metalgo/genesis"
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/vms/secp256k1fx"
-	wallet "github.com/MetalBlockchain/metalgo/wallet/subnet/primary"
+	"github.com/cryft-labs/cryftgo/api/health"
+	"github.com/cryft-labs/cryftgoinfo"
+	"github.com/cryft-labs/cryftgosis"
+	"github.com/cryft-labs/cryftgo
+	"github.com/cryft-labs/cryftgosecp256k1fx"
+	wallet "github.com/cryft-labs/cryftgoet/subnet/primary"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/go-cmd/cmd"
 	"github.com/onsi/ginkgo/v2"
 	"github.com/onsi/gomega"
-	"github.com/shubhamdubey02/subnet-evm/core"
-	"github.com/shubhamdubey02/subnet-evm/plugin/evm"
+	"github.com/ixAnkit/subnet-evm/core"
+	"github.com/ixAnkit/subnet-evm/plugin/evm"
 )
 
 type SubnetSuite struct {

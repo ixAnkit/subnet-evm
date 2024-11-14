@@ -8,8 +8,8 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/commontype"
-	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/ixAnkit/subnet-evm/commontype"
+	"github.com/ixAnkit/subnet-evm/precompile/contract"
 )
 
 // FeeConfigChangedEventGasCost is the gas cost of a FeeConfigChanged event.

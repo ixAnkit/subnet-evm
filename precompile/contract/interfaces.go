@@ -7,9 +7,9 @@ package contract
 import (
 	"math/big"
 
-	"github.com/MetalBlockchain/metalgo/snow"
+	"github.com/cryft-labs/cryftgo/snow"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/ixAnkit/subnet-evm/precompile/precompileconfig"
 )
 
 // StatefulPrecompiledContract is the interface for executing a precompiled contract

@@ -35,8 +35,8 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/shubhamdubey02/subnet-evm/core"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core"
+	"github.com/ixAnkit/subnet-evm/core/types"
 )
 
 // AdminAPI is the collection of Ethereum full node related APIs for node

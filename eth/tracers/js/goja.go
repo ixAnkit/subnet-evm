@@ -37,9 +37,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/shubhamdubey02/subnet-evm/core/vm"
-	"github.com/shubhamdubey02/subnet-evm/eth/tracers"
-	jsassets "github.com/shubhamdubey02/subnet-evm/eth/tracers/js/internal/tracers"
+	"github.com/ixAnkit/subnet-evm/core/vm"
+	"github.com/ixAnkit/subnet-evm/eth/tracers"
+	jsassets "github.com/ixAnkit/subnet-evm/eth/tracers/js/internal/tracers"
 )
 
 var assetTracers = make(map[string]string)

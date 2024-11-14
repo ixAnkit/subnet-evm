@@ -7,8 +7,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/MetalBlockchain/metalgo/utils"
-	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/cryft-labs/cryftgo/utils"
+	"github.com/ixAnkit/subnet-evm/params"
 	"github.com/stretchr/testify/require"
 )
 

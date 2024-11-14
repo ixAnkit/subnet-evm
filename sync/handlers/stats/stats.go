@@ -6,7 +6,7 @@ package stats
 import (
 	"time"
 
-	"github.com/shubhamdubey02/subnet-evm/metrics"
+	"github.com/ixAnkit/subnet-evm/metrics"
 )
 
 // HandlerStats reports prometheus metrics for the state sync handlers

@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/constants"
+	"github.com/ixAnkit/subnet-evm/constants"
 	"github.com/stretchr/testify/require"
 )
 

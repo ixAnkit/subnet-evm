@@ -5,8 +5,8 @@ package txallowlist
 
 import (
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
-	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/ixAnkit/subnet-evm/precompile/allowlist"
+	"github.com/ixAnkit/subnet-evm/precompile/contract"
 )
 
 // Singleton StatefulPrecompiledContract for W/R access to the tx allow list.

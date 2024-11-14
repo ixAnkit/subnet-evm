@@ -10,7 +10,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/shubhamdubey02/subnet-evm/utils"
+	"github.com/ixAnkit/subnet-evm/utils"
 )
 
 // StateUpgrade describes the modifications to be made to the state during

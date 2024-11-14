@@ -32,9 +32,9 @@ import (
 	"path/filepath"
 
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/shubhamdubey02/subnet-evm/accounts"
-	"github.com/shubhamdubey02/subnet-evm/accounts/external"
-	"github.com/shubhamdubey02/subnet-evm/accounts/keystore"
+	"github.com/ixAnkit/subnet-evm/accounts"
+	"github.com/ixAnkit/subnet-evm/accounts/external"
+	"github.com/ixAnkit/subnet-evm/accounts/keystore"
 )
 
 // Config represents a small collection of configuration values to fine tune the

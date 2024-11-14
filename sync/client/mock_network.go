@@ -7,10 +7,10 @@ import (
 	"context"
 	"errors"
 
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/shubhamdubey02/subnet-evm/peer"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/ixAnkit/subnet-evm/peer"
 
-	"github.com/MetalBlockchain/metalgo/version"
+	"github.com/cryft-labs/cryftgoion"
 )
 
 var _ peer.NetworkClient = &mockNetwork{}

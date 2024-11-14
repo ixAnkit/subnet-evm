@@ -32,11 +32,11 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/shubhamdubey02/subnet-evm/consensus/dummy"
-	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/core/vm"
-	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/consensus/dummy"
+	"github.com/ixAnkit/subnet-evm/core/rawdb"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core/vm"
+	"github.com/ixAnkit/subnet-evm/params"
 )
 
 func ExampleGenerateChain() {

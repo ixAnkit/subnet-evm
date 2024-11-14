@@ -8,10 +8,10 @@ import (
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/precompile/modules"
-	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
-	"github.com/shubhamdubey02/subnet-evm/precompile/testutils"
-	"github.com/shubhamdubey02/subnet-evm/utils"
+	"github.com/ixAnkit/subnet-evm/precompile/modules"
+	"github.com/ixAnkit/subnet-evm/precompile/precompileconfig"
+	"github.com/ixAnkit/subnet-evm/precompile/testutils"
+	"github.com/ixAnkit/subnet-evm/utils"
 	"go.uber.org/mock/gomock"
 )
 

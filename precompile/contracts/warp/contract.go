@@ -7,11 +7,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp"
-	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp/payload"
-	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
-	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
-	"github.com/shubhamdubey02/subnet-evm/vmerrs"
+	"github.com/cryft-labs/cryftgo/vms/platformvm/warp"
+	"github.com/cryft-labs/cryftgoplatformvm/warp/payload"
+	"github.com/ixAnkit/subnet-evm/accounts/abi"
+	"github.com/ixAnkit/subnet-evm/precompile/contract"
+	"github.com/ixAnkit/subnet-evm/vmerrs"
 
 	_ "embed"
 

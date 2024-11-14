@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/params"
+	"github.com/ixAnkit/subnet-evm/params"
 )
 
 // EndByte is used as a delimiter for the bytes packed into a precompile predicate.

@@ -32,8 +32,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/shubhamdubey02/subnet-evm/metrics"
-	"github.com/shubhamdubey02/subnet-evm/utils"
+	"github.com/ixAnkit/subnet-evm/metrics"
+	"github.com/ixAnkit/subnet-evm/utils"
 )
 
 // triePrefetchMetricsPrefix is the prefix under which to publish the metrics.

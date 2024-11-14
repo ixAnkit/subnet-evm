@@ -12,7 +12,7 @@ package {{.Package}}
 import (
 	"math/big"
 
-	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
+	"github.com/ixAnkit/subnet-evm/precompile/contract"
 	"github.com/ethereum/go-ethereum/common"
 )
 

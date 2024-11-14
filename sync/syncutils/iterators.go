@@ -5,8 +5,8 @@ package syncutils
 
 import (
 	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/shubhamdubey02/subnet-evm/core/state/snapshot"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core/state/snapshot"
+	"github.com/ixAnkit/subnet-evm/core/types"
 )
 
 var (

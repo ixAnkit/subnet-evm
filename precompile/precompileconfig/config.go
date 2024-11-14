@@ -5,13 +5,13 @@
 package precompileconfig
 
 import (
-	"github.com/MetalBlockchain/metalgo/chains/atomic"
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/snow"
-	"github.com/MetalBlockchain/metalgo/snow/engine/snowman/block"
-	"github.com/MetalBlockchain/metalgo/vms/platformvm/warp"
+	"github.com/cryft-labs/cryftgo/chains/atomic"
+	"github.com/cryft-labs/cryftgo
+	"github.com/cryft-labs/cryftgo"
+	"github.com/cryft-labs/cryftgo/engine/snowman/block"
+	"github.com/cryft-labs/cryftgoplatformvm/warp"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/commontype"
+	"github.com/ixAnkit/subnet-evm/commontype"
 )
 
 // StatefulPrecompileConfig defines the interface for a stateful precompile to

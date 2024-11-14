@@ -29,8 +29,8 @@ package node
 import (
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/shubhamdubey02/subnet-evm/internal/debug"
-	"github.com/shubhamdubey02/subnet-evm/rpc"
+	"github.com/ixAnkit/subnet-evm/internal/debug"
+	"github.com/ixAnkit/subnet-evm/rpc"
 )
 
 // apis returns the collection of built-in RPC APIs.

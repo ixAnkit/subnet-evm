@@ -9,13 +9,13 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/utils/set"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgos/set"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/shubhamdubey02/subnet-evm/core/rawdb"
-	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
-	statesyncclient "github.com/shubhamdubey02/subnet-evm/sync/client"
+	"github.com/ixAnkit/subnet-evm/core/rawdb"
+	"github.com/ixAnkit/subnet-evm/plugin/evm/message"
+	statesyncclient "github.com/ixAnkit/subnet-evm/sync/client"
 )
 
 const (

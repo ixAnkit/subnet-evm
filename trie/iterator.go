@@ -32,7 +32,7 @@ import (
 	"errors"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core/types"
 )
 
 // NodeResolver is used for looking up trie nodes before reaching into the real

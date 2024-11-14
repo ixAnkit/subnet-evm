@@ -7,12 +7,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/MetalBlockchain/metalgo/database"
-	"github.com/MetalBlockchain/metalgo/snow/engine/snowman/block"
+	"github.com/cryft-labs/cryftgo/database"
+	"github.com/cryft-labs/cryftgo/snow/engine/snowman/block"
 
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/shubhamdubey02/subnet-evm/core"
-	"github.com/shubhamdubey02/subnet-evm/plugin/evm/message"
+	"github.com/ixAnkit/subnet-evm/core"
+	"github.com/ixAnkit/subnet-evm/plugin/evm/message"
 )
 
 type stateSyncServerConfig struct {

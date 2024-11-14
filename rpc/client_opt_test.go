@@ -15,7 +15,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/shubhamdubey02/subnet-evm/rpc"
+	"github.com/ixAnkit/subnet-evm/rpc"
 )
 
 // This example configures a HTTP-based RPC client with two options - one setting the

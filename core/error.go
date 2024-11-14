@@ -29,7 +29,7 @@ package core
 import (
 	"errors"
 
-	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core/types"
 )
 
 var (

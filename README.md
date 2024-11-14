@@ -4,7 +4,7 @@ Metal is a network composed of multiple blockchains.
 Each blockchain is an instance of a Virtual Machine (VM), much like an object in an object-oriented language is an instance of a class.
 That is, the VM defines the behavior of the blockchain.
 
-Subnet EVM is the Virtual Machine (VM) that defines the Subnet Contract Chains. Subnet EVM is a simplified version of [Coreth VM (C-Chain)](https://github.com/MetalBlockchain/coreth).
+Subnet EVM is the Virtual Machine (VM) that defines the Subnet Contract Chains. Subnet EVM is a simplified version of [Coreth VM (C-Chain)](https://github.com/cryft-labs/coreth).
 
 This chain implements the Ethereum Virtual Machine and supports Solidity smart contracts as well as most other Ethereum client functionality.
 
@@ -106,7 +106,7 @@ Download the `subnet-evm` repository into your `$GOPATH`:
 cd $GOPATH
 mkdir -p src/github.com/!metal!blockchain
 cd src/github.com/\!metal\!blockchain
-git clone git@github.com:MetalBlockchain/subnet-evm.git
+git clone git@github.com:ixAnkit/subnet-evm.git
 cd subnet-evm
 ```
 
@@ -114,4 +114,4 @@ This will clone and checkout to `master` branch.
 
 ### Run Local Network
 
-To run a local network, it is recommended to use the [metal-cli](https://github.com/MetalBlockchain/metal-cli) to set up an instance of Subnet-EVM on a local Metal Network.
+To run a local network, it is recommended to use the [metal-cli](https://github.com/ixAnkit/cryft) to set up an instance of Subnet-EVM on a local Metal Network.

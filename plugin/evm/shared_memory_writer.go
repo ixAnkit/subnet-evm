@@ -4,9 +4,9 @@
 package evm
 
 import (
-	"github.com/MetalBlockchain/metalgo/chains/atomic"
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
+	"github.com/cryft-labs/cryftgo/chains/atomic"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/ixAnkit/subnet-evm/precompile/precompileconfig"
 )
 
 var _ precompileconfig.SharedMemoryWriter = &sharedMemoryWriter{}

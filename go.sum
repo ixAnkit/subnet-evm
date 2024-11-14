@@ -48,10 +48,10 @@ github.com/DataDog/zstd v1.5.2/go.mod h1:g4AWEaM3yOg3HYfnJ3YIawPnVdXJh9QME85blwS
 github.com/Joker/hpp v1.0.0/go.mod h1:8x5n+M1Hp5hC0g8okX3sR3vFQwynaX/UgSOM9MeBKzY=
 github.com/MetalBlockchain/coreth v0.13.2-rc.3 h1:/IDUI4+YsxAzRwFsMETLkDiVTv0aTHBDtF4Hy8DOUbM=
 github.com/MetalBlockchain/coreth v0.13.2-rc.3/go.mod h1:GT47JO3fy9OZEJRmB3fHyIymb2/QYIQ/zrfGMl2Zvqw=
-github.com/MetalBlockchain/metalgo v1.11.3 h1:03mJATrtuVzlJ7QGyLCa8ODMcImK1K+rEK6S7l7gFk8=
-github.com/MetalBlockchain/metalgo v1.11.3/go.mod h1:RY0EaxDYkNzuUKrxQhIMpNZwTZ7UPclFcnCtdKIhH+A=
-github.com/MetalBlockchain/subnet-evm v0.6.3 h1:MLIvb1FGpnsrpDOPCB3yhQl5fWVL4wNbl0vXyG2H7lk=
-github.com/MetalBlockchain/subnet-evm v0.6.3/go.mod h1:t1S0Ab50nirGeP8kBXmqGQoS03M04CJBRq+FJtCZVtU=
+github.com/cryft-labs/cryftgo v1.11.3 h1:03mJATrtuVzlJ7QGyLCa8ODMcImK1K+rEK6S7l7gFk8=
+github.com/cryft-labs/cryftgo v1.11.3/go.mod h1:RY0EaxDYkNzuUKrxQhIMpNZwTZ7UPclFcnCtdKIhH+A=
+github.com/ixAnkit/subnet-evm v0.6.3 h1:MLIvb1FGpnsrpDOPCB3yhQl5fWVL4wNbl0vXyG2H7lk=
+github.com/ixAnkit/subnet-evm v0.6.3/go.mod h1:t1S0Ab50nirGeP8kBXmqGQoS03M04CJBRq+FJtCZVtU=
 github.com/NYTimes/gziphandler v1.1.1 h1:ZUDjpQae29j0ryrS0u/B8HZfJBtBQHjqw2rQ2cqUQ3I=
 github.com/NYTimes/gziphandler v1.1.1/go.mod h1:n/CVRwUEOgIxrgPvAQhUUr9oeUtvrhMomdKFjzJNB0c=
 github.com/Shopify/goreferrer v0.0.0-20181106222321-ec9c9a553398/go.mod h1:a1uqRtAwp2Xwc6WNPJEufxJ7fx3npB4UV/JOLmbu5I0=

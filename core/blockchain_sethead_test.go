@@ -32,7 +32,7 @@ package core
 import (
 	"testing"
 
-	"github.com/shubhamdubey02/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/core/types"
 )
 
 // verifyNoGaps checks that there are no gaps after the initial set of blocks in

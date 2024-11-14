@@ -9,12 +9,12 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/shubhamdubey02/subnet-evm/core/state"
-	"github.com/shubhamdubey02/subnet-evm/precompile/allowlist"
-	"github.com/shubhamdubey02/subnet-evm/precompile/contract"
-	"github.com/shubhamdubey02/subnet-evm/precompile/precompileconfig"
-	"github.com/shubhamdubey02/subnet-evm/precompile/testutils"
-	"github.com/shubhamdubey02/subnet-evm/vmerrs"
+	"github.com/ixAnkit/subnet-evm/core/state"
+	"github.com/ixAnkit/subnet-evm/precompile/allowlist"
+	"github.com/ixAnkit/subnet-evm/precompile/contract"
+	"github.com/ixAnkit/subnet-evm/precompile/precompileconfig"
+	"github.com/ixAnkit/subnet-evm/precompile/testutils"
+	"github.com/ixAnkit/subnet-evm/vmerrs"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )

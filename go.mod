@@ -1,10 +1,13 @@
-module github.com/shubhamdubey02/subnet-evm
+module github.com/ixAnkit/subnet-evm
 
 go 1.21
 
+toolchain go1.22.9
+
+
 require (
-	github.com/MetalBlockchain/metalgo v1.11.3
-	github.com/MetalBlockchain/subnet-evm v0.6.3
+	github.com/cryft-labs/cryftgo v1.0.0-rc
+	github.com/ixAnkit/subnet-evm v0.6.3-rc.1
 	github.com/VictoriaMetrics/fastcache v1.10.0
 	github.com/cespare/cp v0.1.0
 	github.com/davecgh/go-spew v1.1.1
@@ -54,7 +57,7 @@ require (
 
 require (
 	github.com/DataDog/zstd v1.5.2 // indirect
-	github.com/MetalBlockchain/coreth v0.13.2-rc.3 // indirect
+	github.com/cryft-labs/coreth v0.1.0-rc // indirect
 	github.com/NYTimes/gziphandler v1.1.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bits-and-blooms/bitset v1.7.0 // indirect

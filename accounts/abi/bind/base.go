@@ -37,9 +37,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/event"
-	"github.com/shubhamdubey02/subnet-evm/accounts/abi"
-	"github.com/shubhamdubey02/subnet-evm/core/types"
-	"github.com/shubhamdubey02/subnet-evm/interfaces"
+	"github.com/ixAnkit/subnet-evm/accounts/abi"
+	"github.com/ixAnkit/subnet-evm/core/types"
+	"github.com/ixAnkit/subnet-evm/interfaces"
 )
 
 const basefeeWiggleMultiplier = 2

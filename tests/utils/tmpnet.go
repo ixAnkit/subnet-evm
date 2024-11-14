@@ -7,11 +7,11 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/MetalBlockchain/metalgo/config"
-	"github.com/MetalBlockchain/metalgo/ids"
-	"github.com/MetalBlockchain/metalgo/tests/fixture/tmpnet"
+	"github.com/cryft-labs/cryftgo/config"
+	"github.com/cryft-labs/cryftgo/ids"
+	"github.com/cryft-labs/cryftgo/tests/fixture/tmpnet"
 
-	"github.com/MetalBlockchain/subnet-evm/plugin/evm"
+	"github.com/ixAnkit/subnet-evm/plugin/evm"
 )
 
 func NewTmpnetNodes(count int) []*tmpnet.Node {

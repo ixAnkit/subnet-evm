@@ -27,8 +27,8 @@
 package runtime
 
 import (
-	"github.com/shubhamdubey02/subnet-evm/core"
-	"github.com/shubhamdubey02/subnet-evm/core/vm"
+	"github.com/ixAnkit/subnet-evm/core"
+	"github.com/ixAnkit/subnet-evm/core/vm"
 )
 
 func NewEnv(cfg *Config) *vm.EVM {

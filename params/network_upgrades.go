@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"strconv"
 
-	"github.com/MetalBlockchain/metalgo/version"
-	"github.com/shubhamdubey02/subnet-evm/utils"
+	"github.com/cryft-labs/cryftgo/version"
+	"github.com/ixAnkit/subnet-evm/utils"
 )
 
 // NetworkUpgrades contains timestamps that enable network upgrades.
